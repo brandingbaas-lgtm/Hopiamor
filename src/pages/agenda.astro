@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+import EventCard from '../components/EventCard.astro';
+import events from '../data/events.json';
+const withDate = events.filter((e) => e.date).sort((a, b) => a.date.localeCompare(b.date));
+const tba = events.filter((e) => !e.date).sort((a, b) => Number(b.featured) - Number(a.featured));
+const all = [...withDate, ...tba];
+const cities = [...new Set(events.map((e) => e.city))].sort();
+const types = [...new Set(events.map((e) => e.type))].sort();
+---
+<Base title="Agenda" description="Afro-Caribische evenementen in Nederland: festivals, concerten, Keti Koti, domino-avonden en meer. Filter op stad en soort.">
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow sea">Agenda</span>
+      <h1>Wat is er te doen?</h1>
+      <p class="lede">Festivals, concerten, herdenkingen, filmavonden en dominotafels door het hele land. Van Amersfoort tot Rotterdam, van Almere tot net over de grens.</p>
+      <div class="filters mt-2">
+        <label for="f-city">Stad</label>
+        <select id="f-city" data-filter="city"><option value="">Alle steden</option>{cities.map((c) => <option value={c}>{c}</option>)}</select>
+        <label for="f-type">Soort</label>
+        <select id="f-type" data-filter="type"><option value="">Alles</option>{types.map((t) => <option value={t}>{t}</option>)}</select>
+        <label for="f-q">Zoek</label>
+        <input id="f-q" type="search" placeholder="bijv. domino, Keti Koti" data-filter="q" />
+      </div>
+      <div class="list" data-events>
+        {all.map((e) => <div data-city={e.city} data-type={e.type} data-text={`${e.title} ${e.summary} ${e.venue} ${e.organizer}`.toLowerCase()}><EventCard event={e} /></div>)}
+      </div>
+      <div class="empty" data-empty hidden>Niets gevonden. Ken jij een evenement dat hier hoort? <a href="/aanmelden/">Meld het aan</a>.</div>
+      <p class="small mt-2">"Datum volgt" betekent dat de organisator de datum voor de volgende editie nog niet heeft bekendgemaakt. Jaarlijkse evenementen tonen we alvast met de gebruikelijke periode. Controleer altijd bij de organisator.</p>
+    </div>
+  </section>
+  <section class="section ink">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Organiseer je iets?</span>
+        <h2>Zet je evenement in de agenda</h2>
+        <p class="lede">Gratis voor evenementen uit en voor de community. Wij checken, plaatsen en delen het via onze kanalen. Ook voor gemeentes, podia en culturele instellingen.</p>
+      </div>
+      <div class="btn-row"><a class="btn sun" href="/aanmelden/#evenement">Evenement aanmelden</a><a class="btn ghost" href="/samenwerken/">Samenwerken</a></div>
+    </div>
+  </section>
+  <script>
+    const controls = document.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[data-filter]');
+    const items = document.querySelectorAll<HTMLElement>('[data-events] > div');
+    const empty = document.querySelector<HTMLElement>('[data-empty]')!;
+    function apply() {
+      const city = (document.querySelector<HTMLSelectElement>('[data-filter="city"]')!).value;
+      const type = (document.querySelector<HTMLSelectElement>('[data-filter="type"]')!).value;
+      const q = (document.querySelector<HTMLInputElement>('[data-filter="q"]')!).value.trim().toLowerCase();
+      let shown = 0;
+      items.forEach((el) => {
+        const ok = (!city || el.dataset.city === city) && (!type || el.dataset.type === type) && (!q || (el.dataset.text || '').includes(q));
+        el.hidden = !ok; if (ok) shown++;
+      });
+      empty.hidden = shown > 0;
+    }
+    controls.forEach((c) => c.addEventListener('input', apply));
+  </script>
+</Base>

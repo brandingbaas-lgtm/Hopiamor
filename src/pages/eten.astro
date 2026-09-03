@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import Art from '../components/Art.astro';
+import food from '../data/food.json';
+const cities = [...new Set(food.map((f) => f.city))].sort();
+const wanted = ['Amersfoort', 'Utrecht', 'Almere', 'Den Haag', 'Tilburg', 'Groningen'];
+---
+<Base title="Eten & drinken" description="De eetgids van Afro-Caribisch Nederland: sancocho, stoba, pastechi, roti en pom. Adressen per stad, aangevuld door de community.">
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow palm">Eten & drinken</span>
+      <h1>Waar eet je de beste stoba?</h1>
+      <p class="lede">Adressen uit de community, voor de community. We beginnen met de klassiekers en groeien stad voor stad. Elk adres wordt door de redactie gecheckt (en geproefd).</p>
+      <div class="filters mt-2">
+        <button class="chip" aria-pressed="true" data-city="">Alle steden</button>
+        {cities.map((c) => <button class="chip" aria-pressed="false" data-city={c}>{c}</button>)}
+      </div>
+      <div class="grid cols-3" data-food>
+        {food.map((f) => (
+          <article class="card" data-city={f.city}>
+            <div class="cover"><Art color={f.color as any} motif="plate" /></div>
+            <div class="body">
+              <div class="meta"><span class="tag palm">{f.kitchen}</span>{f.status !== 'geverifieerd' && <span class="tag outline">Nog te checken</span>}</div>
+              <h3>{f.name}</h3>
+              <p>{f.summary}</p>
+              <div class="meta"><span>📍 {f.city}{f.area ? `, ${f.area}` : ''}</span><span>⭐ {f.signature}</span></div>
+              <div class="foot"><div class="meta">{f.tags.map((t) => <span>#{t}</span>)}</div></div>
+            </div>
+          </article>
+        ))}
+        {wanted.map((c) => (
+          <article class="card" data-city={c} style="border-style:dashed;box-shadow:none;background:transparent">
+            <div class="body" style="justify-content:center;text-align:center;min-height:220px">
+              <span class="eyebrow" style="margin:0 auto">Gezocht</span>
+              <h3>Het beste adres in {c}</h3>
+              <p>Ken jij een toko, snèk, restaurant of thuiskok in {c}? Wij komen proeven.</p>
+              <div class="foot" style="justify-content:center"><a class="btn ghost" href={`/aanmelden/#eettent`}>Adres aanmelden</a></div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section sand">
+    <div class="wrap split">
+      <div class="art-block"><Art color="sun" motif="plate" /></div>
+      <div>
+        <span class="eyebrow">Ondernemers</span>
+        <h2>Heb je een eettent, toko of cateringbedrijf?</h2>
+        <p class="lede">Een vermelding in de gids is gratis. Wil je meer, zoals een plek op het foodcourt van Hopi Amor 2027, een portret in het magazine of catering-aanvragen van gemeentes en podia? <a href="/samenwerken/#ondernemers">Lees wat we bieden</a>.</p>
+        <a class="btn" href="/aanmelden/#eettent">Meld je aan</a>
+      </div>
+    </div>
+  </section>
+  <script>
+    const chips = document.querySelectorAll<HTMLButtonElement>('[data-city]');
+    const items = document.querySelectorAll<HTMLElement>('[data-food] > article');
+    chips.forEach((chip) => chip.addEventListener('click', () => {
+      chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
+      const f = chip.dataset.city || '';
+      items.forEach((el) => { el.hidden = !!f && el.dataset.city !== f; });
+    }));
+  </script>
+</Base>

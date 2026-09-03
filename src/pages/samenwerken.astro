@@ -1,0 +1,118 @@
+---
+import Base from '../layouts/Base.astro';
+import Art from '../components/Art.astro';
+import Form from '../components/Form.astro';
+const funds = [
+  { name: 'Gemeente Amersfoort', what: 'Projectsubsidie professionele kunst en cultuur: € 1.500 tot € 25.000, maximaal 60% van de begroting. Meerjarige regeling 2025-2028 met expliciete punten voor inclusie.', url: 'https://www.amersfoort.nl/subsidie-projecten-professionele-kunst-en-cultuur' },
+  { name: 'Fonds voor Cultuurparticipatie', what: 'Landelijk fonds voor projecten waarin mensen zelf cultuur maken: amateurkunst, erfgoedparticipatie, cultuureducatie.', url: 'https://cultuurparticipatie.nl' },
+  { name: 'Fonds Podiumkunsten', what: 'Ondersteunt podiumkunst en festivals, waaronder programmering van muziek en dans uit de diaspora.', url: 'https://fondspodiumkunsten.nl' },
+  { name: 'Prins Bernhard Cultuurfonds', what: 'Landelijke en provinciale afdelingen steunen culturele projecten met een sterke lokale verankering.', url: 'https://www.cultuurfonds.nl' },
+  { name: 'VSBfonds', what: 'Projecten die mensen laten meedoen en verbinden, kunst en cultuur die de samenleving sterker maakt.', url: 'https://www.vsbfonds.nl' },
+  { name: 'Oranje Fonds', what: 'Sociale initiatieven die ontmoeting en cohesie in wijken vergroten, zoals dominotafels en buurtprogramma\'s.', url: 'https://www.oranjefonds.nl' },
+];
+---
+<Base title="Samenwerken" description="Voor gemeentes, fondsen, podia, scholen en ondernemers: zo werk je samen met de Afro-Caribische community via Hopi Amor. Bereik, programmering, co-creatie en financiering.">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Voor gemeentes, fondsen, podia, scholen en ondernemers</span>
+        <h1>De ingang naar de Afro-Caribische community. <em>Bewezen in Amersfoort.</em></h1>
+        <p class="lede">Inclusie in cultuurbeleid begint met mensen die je vertrouwen. Hopi Amor is geen adviesbureau, maar een community die al organiseert: een festival met een 4,8, dominotafels, familieteams in de keuken en een groeiend netwerk van artiesten en makers. Wij zijn de brug tussen jou en hen.</p>
+        <div class="btn-row mt-1"><a class="btn coral" href="#gesprek">Plan een gesprek</a><a class="btn ghost" href="#aanbod">Wat we bieden</a></div>
+      </div>
+      <div class="hero-art">
+        <div style="position:absolute;inset:0;border-radius:var(--radius);overflow:hidden"><Art color="sea" motif="people" /></div>
+        <div style="position:absolute;right:-6%;bottom:-6%;width:44%;aspect-ratio:1;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)"><Art color="sun" motif="sun" /></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section ink">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat"><strong>3</strong><span>generaties in één zaal op de debuuteditie</span></div>
+        <div class="stat"><strong>4,8</strong><span>gemiddelde bezoekersscore Hopi Amor 2026</span></div>
+        <div class="stat"><strong>284</strong><span>pre-registraties binnen een week na afloop</span></div>
+        <div class="stat"><strong>1.150+</strong><span>volgers op Instagram, groeiend</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="aanbod">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Wat we bieden</span><h2>Vier manieren om samen te werken</h2></div></div>
+      <div class="grid cols-2">
+        <div class="prop" id="gemeentes"><div class="n">1</div><div><h3>Gemeentes: inclusie concreet maken</h3><p>Programma's op maat voor wijkfeesten, Keti Koti (1 juli), cultuureducatie en ontmoeting tussen generaties. Wij brengen de community, jij de plek en het budget. Rapportage in de taal van jouw subsidieregeling: bereik, participatie, partnerschappen.</p></div></div>
+        <div class="prop" id="fondsen"><div class="n">2</div><div><h3>Fondsen: projecten met echte participatie</h3><p>Aanvragen waarin de community zelf maakt, kookt, speelt en vertelt. Geen aanbod "voor" een doelgroep, maar met. Meetbaar via ons platform: aanmeldingen, bezoekers, verhalen.</p></div></div>
+        <div class="prop" id="podia"><div class="n">3</div><div><h3>Podia, festivals en scholen: programmering</h3><p>Shortlists van artiesten, vertellers, dansdocenten en workshopgevers uit onze gids. Van een Anansi-verteller in de klas tot een volledige festivaldag. Plus promotie naar de community via agenda, magazine en socials.</p></div></div>
+        <div class="prop" id="ondernemers"><div class="n">4</div><div><h3>Ondernemers en venues: zichtbaarheid</h3><p>Gratis vermelding in de eet- en gidspagina's. Betaalde pakketten voor uitgelichte vermeldingen, een portret in het magazine, een plek op het foodcourt van het festival en catering-aanvragen van partners.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section sand">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow sea">Hoe het werkt</span>
+        <h2>Van eerste gesprek tot programma</h2>
+        <ol style="padding-left:1.2rem;display:grid;gap:.8rem">
+          <li><strong>Kennismaking.</strong> Aan tafel, liefst met domino. We horen wat je wilt bereiken en voor wie.</li>
+          <li><strong>Voorstel.</strong> Binnen twee weken een concreet plan met vorm, makers, begroting en wat de community inbrengt.</li>
+          <li><strong>Financiering.</strong> Samen aanvragen bij gemeente of fonds, of direct vanuit jouw budget.</li>
+          <li><strong>Uitvoering.</strong> Wij organiseren met de community, jij bent zichtbaar als partner op platform, festival en socials.</li>
+          <li><strong>Terugkoppeling.</strong> Cijfers, foto's en verhalen voor je verantwoording en je volgende aanvraag.</li>
+        </ol>
+      </div>
+      <div class="art-block"><Art color="palm" motif="waves" /></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Financiering</span><h2>Regelingen en fondsen die passen</h2></div></div>
+      <div class="grid cols-3">
+        {funds.map((f) => (
+          <article class="card"><div class="body"><h3><a href={f.url} rel="noopener" target="_blank">{f.name}</a></h3><p>{f.what}</p></div></article>
+        ))}
+      </div>
+      <p class="small mt-2">Bedragen en voorwaarden veranderen. Controleer altijd de actuele regeling bij de gemeente of het fonds. Wij helpen bij de aanvraag.</p>
+    </div>
+  </section>
+
+  <section class="section sun">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Partners</span><h2>Met wie we al werken</h2></div></div>
+      <div class="grid cols-3">
+        <div class="card"><div class="body"><h3>FLUOR Amersfoort</h3><p>Poppodium van Amersfoort en thuisbasis van Hopi Amor Caribbean Family Festival.</p></div></div>
+        <div class="card"><div class="body"><h3>Familieteams & vrijwilligers</h3><p>De keuken, de dominotafel en de kids area draaien op mensen uit de community.</p></div></div>
+        <div class="card" style="border-style:dashed;background:transparent;box-shadow:none"><div class="body"><h3>Jouw organisatie</h3><p>Gemeente, fonds, podium, school of bedrijf: hier komt jullie logo.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="gesprek">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Plan een gesprek</span>
+        <h2>Vertel ons wat je wilt bereiken</h2>
+        <p class="lede">We reageren binnen drie werkdagen. Liever bellen of langskomen in Amersfoort? Zet het in je bericht.</p>
+      </div>
+      <div class="form-card">
+        <Form name="samenwerken" subject="Samenwerken met Hopi Amor" submitLabel="Verstuur aanvraag">
+          <div class="two">
+            <label>Naam <input type="text" name="naam" required /></label>
+            <label>Organisatie <input type="text" name="organisatie" required /></label>
+          </div>
+          <div class="two">
+            <label>E-mailadres <input type="email" name="email" required /></label>
+            <label>Telefoon (optioneel) <input type="tel" name="telefoon" /></label>
+          </div>
+          <label>Ik ben een…
+            <select name="type"><option>Gemeente</option><option>Fonds</option><option>Podium of festival</option><option>School of bibliotheek</option><option>Ondernemer of venue</option><option>Anders</option></select>
+          </label>
+          <label>Wat wil je bereiken? <textarea name="bericht" required placeholder="bijv. Een Keti Koti-programma in onze gemeente in 2027, budget nog te bepalen."></textarea></label>
+        </Form>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import Art from '../components/Art.astro';
+import { papiamentu } from '../lib/site';
+---
+<Base title="Over Hopi Amor" description="Hopi Amor betekent veel liefde. Van Caribbean Family Festival in Amersfoort naar het platform voor Afro-Caribische cultuur in Nederland.">
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Over ons</span>
+        <h1>Hopi amor betekent veel liefde</h1>
+        <p class="lede">Hopi Amor begon als een Caribbean Family Festival in FLUOR Amersfoort: een centrum voor ontmoeting en verbinding tussen generaties door middel van gastronomie, domino en muziek. Na de debuuteditie op 24 mei 2026 groeien we door naar een platform dat het hele jaar open is.</p>
+        <p>Onze missie: Afro-Caribische cultuur in Nederland zichtbaar, vindbaar en verbonden maken. Voor de community zelf, en voor iedereen die ermee wil samenwerken.</p>
+      </div>
+      <div class="art-block"><Art color="sun" motif="sun" /></div>
+    </div>
+  </section>
+  <section class="section sand">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Waar we in geloven</span><h2>Vier uitgangspunten</h2></div></div>
+      <div class="grid cols-2">
+        <div class="prop"><div class="n">1</div><div><h3>Generaties samen</h3><p>Bieuw i nobo. Oud en nieuw aan dezelfde tafel. Alles wat we maken moet werken voor een kind van acht en een oma van tachtig.</p></div></div>
+        <div class="prop"><div class="n">2</div><div><h3>Van ons allemaal</h3><p>De community maakt mee. Familieteams koken, ooms hosten de dominotafel, jongeren draaien. Het platform werkt net zo: jij meldt aan, wij checken.</p></div></div>
+        <div class="prop"><div class="n">3</div><div><h3>Levend erfgoed</h3><p>Geen museum. Tumba, stoba, Anansi en Keti Koti leven in het nu. We vertellen ze door en geven ze een podium.</p></div></div>
+        <div class="prop"><div class="n">4</div><div><h3>Brug naar buiten</h3><p>Gemeentes, fondsen en podia willen samenwerken maar kennen de weg niet. Wij zijn die weg, met respect voor beide kanten.</p></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow palm">Papiamentu</span><h2>Woorden die je bij ons tegenkomt</h2></div></div>
+      <div class="table-wrap"><table class="prose" style="padding:0;max-width:none;width:100%;border-collapse:collapse">
+        <thead><tr><th style="text-align:left;padding:.6rem .5rem;border-bottom:1px solid var(--line)">Woord</th><th style="text-align:left;padding:.6rem .5rem;border-bottom:1px solid var(--line)">Betekenis</th></tr></thead>
+        <tbody>{papiamentu.map((w) => <tr><td style="padding:.6rem .5rem;border-bottom:1px solid var(--line)"><strong>{w.word}</strong></td><td style="padding:.6rem .5rem;border-bottom:1px solid var(--line)">{w.meaning}</td></tr>)}</tbody>
+      </table></div>
+    </div>
+  </section>
+  <section class="section ink">
+    <div class="wrap center">
+      <h2>Wil je meebouwen?</h2>
+      <p class="lede mx">We zoeken schrijvers, fotografen, stadsredacteuren en mensen die de community in hun eigen stad kennen.</p>
+      <div class="btn-row" style="justify-content:center"><a class="btn sun" href="/contact/">Neem contact op</a><a class="btn ghost" href="/aanmelden/">Iets aanmelden</a></div>
+    </div>
+  </section>
+</Base>

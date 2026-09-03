@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import Art from '../components/Art.astro';
+import makers from '../data/makers.json';
+const wanted = ['Dans', 'Beeldende kunst', 'Mode', 'Fotografie & film', 'Theater', 'Koken & workshops'];
+---
+<Base title="Makers & artiesten" description="Vertellers, dansers, dichters, percussionisten en kunstenaars uit de Afro-Caribische community in Nederland. Boekbaar voor scholen, festivals en gemeentes.">
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow palm">Makers & artiesten</span>
+      <h1>De mensen die de cultuur dragen</h1>
+      <p class="lede">Anansi-vertellers, percussionisten, spoken word-artiesten, dansdocenten en kunstenaars. Voor wie wil ontdekken, en voor scholen, bibliotheken, festivals en gemeentes die iemand willen boeken.</p>
+      <div class="grid cols-3 mt-2">
+        {makers.map((m) => (
+          <article class="card">
+            <div class="cover"><Art color={m.color as any} motif={m.motif as any} /></div>
+            <div class="body">
+              <div class="meta"><span class="tag palm">{m.discipline}</span><span>{m.base}</span></div>
+              <h3>{m.name}</h3>
+              <p>{m.summary}</p>
+            </div>
+          </article>
+        ))}
+        {wanted.map((w) => (
+          <article class="card" style="border-style:dashed;box-shadow:none;background:transparent">
+            <div class="body" style="justify-content:center;text-align:center;min-height:220px">
+              <span class="eyebrow" style="margin:0 auto">Gezocht</span>
+              <h3>{w}</h3>
+              <p>Ben jij of ken jij een maker in deze discipline? We geven je graag een plek.</p>
+              <div class="foot" style="justify-content:center"><a class="btn ghost" href="/aanmelden/#artiest">Aanmelden</a></div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section ink">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Voor scholen, bibliotheken en gemeentes</span>
+        <h2>Een verteller in de klas, een dominotafel in het wijkcentrum</h2>
+        <p class="lede">Cultuureducatie en erfgoed hoeven niet ingewikkeld te zijn. Wij koppelen je aan makers uit de community en helpen met de vorm die past bij jouw doelgroep en budget.</p>
+      </div>
+      <div class="btn-row"><a class="btn sun" href="/samenwerken/">Bekijk de mogelijkheden</a></div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,18 @@
+---
+import Art from './Art.astro';
+import type { CollectionEntry } from 'astro:content';
+interface Props { post: CollectionEntry<'magazine'>; feature?: boolean; }
+const { post, feature = false } = Astro.props;
+const d = post.data;
+const date = d.date.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<article class:list={['card', { feature }]}>
+  <a class="cover" href={`/magazine/${post.id}/`} aria-hidden="true" tabindex="-1">
+    <Art color={d.color} motif={d.motif} image={d.image} alt={d.title} />
+  </a>
+  <div class="body">
+    <div class="meta"><span class={`tag ${d.tagColor ?? ''}`}>{d.category}</span><span>{date}</span><span>{d.readingTime} min</span></div>
+    <h3><a href={`/magazine/${post.id}/`}>{d.title}</a></h3>
+    <p>{d.description}</p>
+  </div>
+</article>

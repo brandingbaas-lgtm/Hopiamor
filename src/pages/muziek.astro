@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import Art from '../components/Art.astro';
+import music from '../data/music.json';
+const festival = music.filter((m) => m.hopiAmor);
+const others = music.filter((m) => !m.hopiAmor);
+const genres = [...new Set(music.flatMap((m) => m.genres))].sort();
+---
+<Base title="Muziek" description="Afro-Caribische muzikanten, bands en DJ's in Nederland: van tumba en tipiko tot bachata, reggae en Papiamentu-rap. Voor fans en boekers.">
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow sea">Muziek</span>
+      <h1>Wie maakt het geluid van de eilanden in Nederland?</h1>
+      <p class="lede">Van festivalheadliners tot lokale tipiko-bands. Deze gids is voor fans die willen ontdekken en voor podia en boekers die de community willen programmeren.</p>
+      <div class="filters mt-2"><span class="small">Genres in de gids:</span>{genres.map((g) => <span class="tag">{g}</span>)}</div>
+    </div>
+  </section>
+  <section class="section ink" style="padding-top:0;margin-top:1rem">
+    <div class="wrap" style="padding-top:3rem">
+      <div class="section-head"><div><span class="eyebrow">Hopi Amor 2026</span><h2>Ze stonden in FLUOR</h2></div></div>
+      <div class="grid cols-3">
+        {festival.map((a) => (
+          <article class="card">
+            <div class="cover square"><Art color={a.color as any} motif={a.motif as any} /></div>
+            <div class="body">
+              <div class="meta"><span class="tag sun">{a.kind}</span><span>{a.base}</span></div>
+              <h3>{a.name}</h3>
+              <p>{a.summary}</p>
+              <div class="meta">{a.genres.join(' • ')}</div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow sea">Landelijk</span><h2>Namen die je moet kennen</h2></div></div>
+      <div class="grid cols-3">
+        {others.map((a) => (
+          <article class="card">
+            <div class="cover square"><Art color={a.color as any} motif={a.motif as any} /></div>
+            <div class="body">
+              <div class="meta"><span class="tag sea">{a.kind}</span><span>{a.base}</span></div>
+              <h3>{a.name}</h3>
+              <p>{a.summary}</p>
+              <div class="meta">{a.genres.join(' • ')}</div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section sand">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Artiesten & boekers</span>
+        <h2>Sta je hier nog niet? Of zoek je een act?</h2>
+        <p class="lede">Artiesten melden zich gratis aan. Podia, festivals en gemeentes die een act uit de community zoeken, helpen we persoonlijk met een shortlist.</p>
+      </div>
+      <div class="btn-row"><a class="btn coral" href="/aanmelden/#artiest">Artiest aanmelden</a><a class="btn ghost" href="/samenwerken/#podia">Ik zoek een act</a></div>
+    </div>
+  </section>
+</Base>

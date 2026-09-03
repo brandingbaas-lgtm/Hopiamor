@@ -1,0 +1,171 @@
+---
+import Base from '../layouts/Base.astro';
+import Art from '../components/Art.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import EventCard from '../components/EventCard.astro';
+import SectionHead from '../components/SectionHead.astro';
+import WordOfTheDay from '../components/WordOfTheDay.astro';
+import Form from '../components/Form.astro';
+import { getCollection } from 'astro:content';
+import events from '../data/events.json';
+import food from '../data/food.json';
+import music from '../data/music.json';
+import { site } from '../lib/site';
+
+const posts = (await getCollection('magazine')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const featured = posts.find((p) => p.data.featured) ?? posts[0];
+const rest = posts.filter((p) => p.id !== featured.id).slice(0, 4);
+const upcoming = events.filter((e) => e.featured).concat(events.filter((e) => !e.featured)).slice(0, 4);
+const spots = food.slice(0, 3);
+const artists = music.filter((m) => m.hopiAmor).slice(0, 4);
+---
+<Base title={site.name}>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Magazine • Agenda • Gids • Community</span>
+        <h1>Alles over Afro-Caribische cultuur in Nederland. <em>Op één plek.</em></h1>
+        <p class="lede">Waar zijn de evenementen? Waar eet je de beste stoba? Wie zijn de muzikanten en makers? Hopi Amor is de gids en het magazine voor de community, en de brug naar gemeentes, fondsen en podia die willen samenwerken.</p>
+        <div class="btn-row mt-1">
+          <a class="btn coral" href="/agenda/">Bekijk de agenda</a>
+          <a class="btn ghost" href="/magazine/">Lees het magazine</a>
+        </div>
+        <p class="small mt-2">Ontstaan uit het Caribbean Family Festival in FLUOR Amersfoort. Nos ta huntu.</p>
+      </div>
+      <div class="hero-art">
+        <div style="position:absolute;inset:0;border-radius:var(--radius);overflow:hidden"><Art color="sun" motif="sun" /></div>
+        <div style="position:absolute;right:-6%;bottom:-6%;width:46%;aspect-ratio:1;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)"><Art color="coral" motif="domino" /></div>
+        <div style="position:absolute;left:-6%;top:-6%;width:34%;aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:var(--shadow)"><Art color="sea" motif="waves" /></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tight">
+    <div class="wrap">
+      <div class="tiles">
+        <a class="tile coral" href="/agenda/"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span><strong>Agenda</strong>Festivals, feesten, herdenkingen, domino</span></a>
+        <a class="tile sun" href="/eten/"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg><span><strong>Eten</strong>Sancocho, stoba, roti, pom</span></a>
+        <a class="tile sea" href="/muziek/"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V6l11-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg><span><strong>Muziek</strong>Bands, DJ's, zangers, rappers</span></a>
+        <a class="tile palm" href="/makers/"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg><span><strong>Makers</strong>Vertellers, dansers, dichters, beeldend</span></a>
+        <a class="tile plum" href="/community/"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20c0-4 3-6 6-6s6 2 6 6M10 20c0-4 3-6 6-6s6 2 6 6"/></svg><span><strong>Community</strong>Organisaties, groepen, netwerken</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <SectionHead eyebrow="Magazine" title="Verhalen uit de community" more={{ href: '/magazine/', label: 'Alle verhalen' }} />
+      <div class="grid cols-4">
+        <ArticleCard post={featured} feature />
+        {rest.map((p) => <ArticleCard post={p} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section sand">
+    <div class="wrap">
+      <SectionHead eyebrow="Agenda" title="Binnenkort in Nederland" more={{ href: '/agenda/', label: 'Volledige agenda' }} tone="sea" />
+      <div class="grid cols-2">
+        {upcoming.map((e) => <EventCard event={e} />)}
+      </div>
+      <p class="small mt-2">Data onder voorbehoud worden bevestigd zodra de organisator ze publiceert. Mis je iets? <a href="/aanmelden/">Meld een evenement aan</a>.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow palm">Eten & drinken</span>
+        <h2>De liefde gaat door de mond</h2>
+        <p class="lede">Van roti-instituten in Amsterdam tot de familieteams die op ons festival sancocho koken. We bouwen aan de eetgids van Afro-Caribisch Nederland, adres voor adres.</p>
+        <div class="list mt-2">
+          {spots.map((s) => (
+            <div class="row">
+              <div class="cover"><Art color={s.color as any} motif="plate" /></div>
+              <div>
+                <h3>{s.name}</h3>
+                <p>{s.summary}</p>
+                <div class="meta"><span>{s.kitchen}</span><span>📍 {s.city}{s.area ? `, ${s.area}` : ''}</span></div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="btn-row mt-2"><a class="btn" href="/eten/">Naar de eetgids</a><a class="btn ghost" href="/aanmelden/">Adres aanmelden</a></div>
+      </div>
+      <div class="art-block"><Art color="palm" motif="plate" /></div>
+    </div>
+  </section>
+
+  <section class="section ink">
+    <div class="wrap">
+      <SectionHead eyebrow="Muziek" title="Stond op Hopi Amor 2026" more={{ href: '/muziek/', label: 'Alle artiesten' }} />
+      <div class="grid cols-4">
+        {artists.map((a) => (
+          <article class="card">
+            <div class="cover square"><Art color={a.color as any} motif={a.motif as any} /></div>
+            <div class="body">
+              <div class="meta"><span class="tag sun">{a.kind}</span></div>
+              <h3>{a.name}</h3>
+              <p>{a.summary}</p>
+              <div class="meta">{a.genres.join(' • ')}</div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <div class="art-block"><Art color="coral" motif="people" /></div>
+      <div>
+        <span class="eyebrow">Het festival</span>
+        <h2>Hopi Amor Caribbean Family Festival</h2>
+        <p class="lede">Zondag 24 mei 2026 stroomde FLUOR vol met onvoorwaardelijke liefde, dampende ritmes en dominomatches. Bezoekers gaven een 4,8. In 2027 komen we terug, groter.</p>
+        <div class="stats mt-2">
+          <div class="stat"><strong>4,8</strong><span>gemiddelde score bezoekers</span></div>
+          <div class="stat"><strong>284</strong><span>VIP pre-registraties voor 2027</span></div>
+          <div class="stat"><strong>3</strong><span>generaties in één zaal</span></div>
+          <div class="stat"><strong>8</strong><span>koppels aan de dominotafel</span></div>
+        </div>
+        <div class="btn-row mt-2"><a class="btn coral" href="/festival/#vip">VIP pre-registratie 2027</a><a class="btn ghost" href="/festival/">Terugblik 2026</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section sun">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Voor gemeentes, fondsen, podia en ondernemers</span>
+        <h2>Wil je samenwerken met de Afro-Caribische community? Wij zijn de ingang.</h2>
+        <p class="lede" style="color:var(--ink)">Inclusie is geen vinkje. Wij verbinden jouw programma, budget of locatie aan artiesten, cateraars, vertellers en families die al klaarstaan. In Amersfoort bewezen, landelijk schaalbaar.</p>
+        <div class="btn-row mt-1"><a class="btn" href="/samenwerken/">Bekijk wat we bieden</a><a class="btn ghost" href="/contact/">Plan een gesprek</a></div>
+      </div>
+      <div class="props">
+        <div class="prop"><div class="n">1</div><div><h3>Bereik</h3><p>Een community die je via de reguliere kanalen niet bereikt, wel via ons.</p></div></div>
+        <div class="prop"><div class="n">2</div><div><h3>Programmering</h3><p>Geverifieerde artiesten, makers en cateraars, van dominotafel tot festival.</p></div></div>
+        <div class="prop"><div class="n">3</div><div><h3>Verhalen</h3><p>Jouw samenwerking krijgt een plek in het magazine en de agenda.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="nieuwsbrief">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow sea">Blijf op de hoogte</span>
+        <h2>Elke twee weken het beste uit de community in je inbox</h2>
+        <p class="lede">Nieuwe adressen, evenementen, verhalen en als eerste de line-up van Hopi Amor 2027.</p>
+        <div class="mt-2"><WordOfTheDay /></div>
+      </div>
+      <div class="form-card">
+        <Form name="nieuwsbrief" subject="Aanmelding nieuwsbrief Hopi Amor" submitLabel="Aanmelden">
+          <div class="two">
+            <label>Voornaam <input type="text" name="voornaam" required placeholder="bijv. Soraya" /></label>
+            <label>E-mailadres <input type="email" name="email" required placeholder="jij@voorbeeld.nl" /></label>
+          </div>
+          <label>Woonplaats (optioneel) <input type="text" name="woonplaats" placeholder="bijv. Amersfoort" /></label>
+        </Form>
+      </div>
+    </div>
+  </section>
+</Base>

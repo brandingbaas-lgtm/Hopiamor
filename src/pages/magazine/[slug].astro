@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import Art from '../../components/Art.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('magazine');
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+const d = post.data;
+const date = d.date.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+const related = (await getCollection('magazine')).filter((p) => p.id !== post.id).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
+---
+<Base title={d.title} description={d.description} type="article">
+  <article>
+    <header class="article-head">
+      <div class="wrap">
+        <span class={`eyebrow ${d.tagColor === 'sea' || d.tagColor === 'palm' ? d.tagColor : ''}`}>{d.category}</span>
+        <h1>{d.title}</h1>
+        <p class="lede">{d.description}</p>
+        <div class="byline"><span>{d.author}</span><span>{date}</span><span>{d.readingTime} min lezen</span></div>
+      </div>
+      <div class="article-cover"><Art color={d.color} motif={d.motif} image={d.image} alt={d.title} /></div>
+    </header>
+    <div class="wrap"><div class="prose"><Content /></div></div>
+  </article>
+  <section class="section sand">
+    <div class="wrap">
+      <div class="section-head"><h2>Lees ook</h2><a class="more" href="/magazine/">Alle verhalen →</a></div>
+      <div class="grid cols-3">{related.map((p) => <ArticleCard post={p} />)}</div>
+    </div>
+  </section>
+</Base>

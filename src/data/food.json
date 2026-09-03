@@ -1,0 +1,62 @@
+[
+  {
+    "id": "roopram-roti",
+    "name": "Roopram Roti",
+    "kitchen": "Surinaams-Hindoestaans",
+    "city": "Amsterdam",
+    "area": "Oost",
+    "summary": "Instituut voor roti in Amsterdam. Kip, lamsvlees of vegetarisch, altijd met een lange rij die de moeite waard is.",
+    "signature": "Roti kip met kousenband en ei",
+    "tags": ["roti", "afhaal", "klassieker"],
+    "color": "sun",
+    "status": "geverifieerd"
+  },
+  {
+    "id": "kam-yin",
+    "name": "Kam Yin",
+    "kitchen": "Surinaams-Chinees",
+    "city": "Amsterdam",
+    "area": "Centrum",
+    "summary": "Broodje pom, tjauw min en moksi meti tot laat in de avond. Een van de bekendste Surinaamse adressen van de stad.",
+    "signature": "Broodje pom",
+    "tags": ["laat open", "afhaal", "klassieker"],
+    "color": "coral",
+    "status": "geverifieerd"
+  },
+  {
+    "id": "spang-makandra",
+    "name": "Spang Makandra",
+    "kitchen": "Surinaams-Javaans",
+    "city": "Amsterdam",
+    "area": "De Pijp",
+    "summary": "Klein, druk en geliefd. Saoto soep, nasi en bami met de smaken van Paramaribo.",
+    "signature": "Saoto soep",
+    "tags": ["betaalbaar", "familie"],
+    "color": "palm",
+    "status": "geverifieerd"
+  },
+  {
+    "id": "warung-mini",
+    "name": "Warung Mini",
+    "kitchen": "Surinaams-Javaans",
+    "city": "Rotterdam",
+    "area": "West-Kruiskade",
+    "summary": "Rotterdams begrip met meerdere vestigingen. Grote porties, snelle service en een menukaart die nooit verveelt.",
+    "signature": "Bami met kip en telo",
+    "tags": ["betaalbaar", "familie", "meerdere vestigingen"],
+    "color": "sea",
+    "status": "geverifieerd"
+  },
+  {
+    "id": "hopi-amor-foodcourt",
+    "name": "Hopi Amor Foodcourt (familieteams)",
+    "kitchen": "Antilliaans & Arubaans",
+    "city": "Amersfoort",
+    "area": "FLUOR, tijdens het festival",
+    "summary": "Op Hopi Amor koken families uit de community zelf: sancocho, dushi stoba, pastechi en tropische punches. Meld je familieteam aan voor 2027.",
+    "signature": "Sancocho en stoba",
+    "tags": ["festival", "community", "aanmelden"],
+    "color": "plum",
+    "status": "geverifieerd"
+  }
+]
