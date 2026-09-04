@@ -1,0 +1,122 @@
+---
+import Base from '../layouts/Base.astro';
+import Art from '../components/Art.astro';
+import Form from '../components/Form.astro';
+const quotes = [
+  { text: 'Caché Royale was ongekend legendarisch! De hele zaal trilde. En wat was die sancocho heerlijk warm en authentiek. Dit is echt thuiskomen.', who: 'Soraya Martis, bezoeker' },
+  { text: 'Mijn grootvader en mijn zoontje stonden samen domino te spelen aan de grote familietafel. Dat beeld raakte me het meest. Generaties lang pure cultuuroverdracht.', who: 'Jeffrey Maduro, winnaar poule B' },
+  { text: 'Ay dushi! De bachata workshop van Angel D was zó goed opgezet. Zelfs de kleintjes deden mee. Volgend jaar ben ik er gegarandeerd weer bij met de hele familie.', who: 'Tante Mavis, moeder & oma' },
+];
+const lineup = ['Caché Royale', 'Angel D', 'Ray Vibes', 'Skinto', 'Tera Kora', 'Troy Dominiq', 'Jahari', 'Kulchaman', 'OmdTheArtist'];
+---
+<Base title="Hopi Amor Festival" description="Het Caribbean Family Festival in FLUOR Amersfoort. Terugblik op de debuuteditie van 24 mei 2026 en VIP pre-registratie voor 2027.">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Caribbean Family Festival • FLUOR Amersfoort</span>
+        <h1>Hopi Amor 2026: <em>Nos ta huntu!</em></h1>
+        <p class="lede">Dankjewel Amersfoort! Op zondag 24 mei 2026 stroomde FLUOR vol met onvoorwaardelijke liefde, dampende ritmes, meeslepende dominomatches en herinneringen voor het leven.</p>
+        <div class="btn-row mt-1"><a class="btn coral" href="#vip">VIP pre-registratie 2027</a><a class="btn ghost" href="#terugblik">Terugblik</a></div>
+      </div>
+      <div class="hero-art">
+        <div style="position:absolute;inset:0;border-radius:var(--radius);overflow:hidden"><Art color="coral" motif="people" /></div>
+        <div style="position:absolute;right:-6%;bottom:-6%;width:44%;aspect-ratio:1;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)"><Art color="sun" motif="domino" /></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section ink" id="terugblik">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat"><strong>4,8 / 5</strong><span>gemiddelde score, gebaseerd op bezoekersreacties</span></div>
+        <div class="stat"><strong>284</strong><span>VIP pre-registraties voor 2027, vroegboekstatus actief</span></div>
+        <div class="stat"><strong>Bieuw & nobo</strong><span>generaties verbonden: sfeer & liefde</span></div>
+        <div class="stat"><strong>Caché Royale</strong><span>volksfavoriet, live EP pre-release</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Wat het was</span>
+        <h2>Een dag waar ouders, kinderen en grootouders samen dansen, ontdekken en genieten</h2>
+        <p class="lede">FLUOR veranderde in een warme, Caribische wereld waar muziek, cultuur en familie samenkomen. Hopi Amor (Papiamentu voor "veel liefde") zet Afro-Caribische cultuur centraal in een toegankelijke, gezinsvriendelijke setting.</p>
+        <ul style="columns:2;gap:2rem;padding-left:1.2rem">
+          <li>Live muziek, DJ's en live band</li>
+          <li>Domino Vibes toernooi (8 koppels)</li>
+          <li>Bachata-workshop en dans</li>
+          <li>Kids area: knutselen, lachen, leren</li>
+          <li>Foodcourt met familieteams</li>
+          <li>Sancocho, stoba, pastechi, punches</li>
+        </ul>
+        <p class="mt-1"><strong>Line-up 2026:</strong> {lineup.join(' • ')}</p>
+      </div>
+      <div class="art-block"><Art color="sea" motif="drum" /></div>
+    </div>
+  </section>
+
+  <section class="section sand">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Onze bezoekers aan het woord</span><h2>"Dit is echt thuiskomen"</h2></div></div>
+      <div class="grid cols-3">{quotes.map((q) => <blockquote class="quote"><p>"{q.text}"</p><cite>{q.who}</cite></blockquote>)}</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <div class="art-block"><Art color="plum" motif="domino" /></div>
+      <div>
+        <span class="eyebrow plum">Domino Vibes</span>
+        <h2>Meer dan een spel. Dit is een strijd om eer.</h2>
+        <p class="lede">Acht koppels, zeven rondes, 100% strijd. Geen geldprijzen: je speelt voor eer en respect binnen de community. De tafel brengt generaties en eilanden bij elkaar. In 2027 komt het toernooi terug, en tussendoor organiseren we open speelavonden.</p>
+        <div class="btn-row"><a class="btn ghost" href="/magazine/domino-is-geen-spelletje/">Lees: domino is geen spelletje</a><a class="btn ghost" href="/agenda/">Speelavonden</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section ink" id="vip">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Hopi Amor 2027 • Vroegboeker</span>
+        <h2>Meld je vast aan voor volgende keer!</h2>
+        <p class="lede">Het festival was een overdonderend succes. De plannen voor volgend jaar liggen al op tafel. Meld je nu kosteloos aan als VIP om als allereerste toegang te krijgen tot de goedkoopste loyalty-tickets en exclusieve line-up updates.</p>
+        <p><strong style="color:var(--sun)">100% gratis en direct recht op de laagste ticketfase (Loyalty Price).</strong></p>
+      </div>
+      <div class="form-card">
+        <Form name="vip-2027" subject="VIP pre-registratie Hopi Amor 2027" submitLabel="Zet mij op de VIP-lijst">
+          <label>Volledige naam <input type="text" name="naam" required placeholder="bijv. Miguel Brydel" /></label>
+          <label>E-mailadres <input type="email" name="email" required placeholder="jij@voorbeeld.nl" /></label>
+          <label>Wat wil je volgend jaar nóg groter zien?
+            <select name="wens">
+              <option>Domino toernooi</option>
+              <option>Grote Caribische bands</option>
+              <option>Uitgebreide kids arena</option>
+              <option>Nog meer culinair eten</option>
+            </select>
+          </label>
+        </Form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Co-creatie & participatie</span>
+        <h2>Hopi Amor is van ons allemaal</h2>
+        <p class="lede">Deel jouw ervaring met ons team, of stuur je eigen sfeerfoto's en video's in voor het herinneringenarchief. Wil je in 2027 meedoen als familieteam in de keuken, vrijwilliger, artiest of ondernemer? Laat het weten.</p>
+      </div>
+      <div class="form-card">
+        <Form name="festival-feedback" subject="Feedback / materiaal Hopi Amor festival" submitLabel="Versturen">
+          <label>Jouw naam <input type="text" name="naam" required placeholder="bijv. Rodney Tromp" /></label>
+          <label>E-mailadres <input type="email" name="email" required /></label>
+          <label>Ik wil…
+            <select name="rol"><option>Feedback geven</option><option>Foto's of video's delen (we mailen je een uploadlink)</option><option>Meedoen als familieteam in de keuken</option><option>Vrijwilliger worden</option><option>Optreden in 2027</option><option>Standhouder of ondernemer worden</option></select>
+          </label>
+          <label>Bericht <textarea name="bericht" placeholder="bijv. Angel D live on stage!"></textarea></label>
+        </Form>
+      </div>
+    </div>
+  </section>
+</Base>

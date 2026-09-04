@@ -1,0 +1,50 @@
+---
+import { site } from '../lib/site';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>{site.name}</h4>
+        <p style="max-width:34ch">Het platform voor Afro-Caribische cultuur in Nederland. Magazine, agenda, gids en community. Ontstaan uit het Caribbean Family Festival in Amersfoort.</p>
+        <p><strong style="color:var(--sun)">Nos ta huntu.</strong></p>
+      </div>
+      <div>
+        <h4>Ontdek</h4>
+        <ul>
+          <li><a href="/magazine/">Magazine</a></li>
+          <li><a href="/agenda/">Agenda</a></li>
+          <li><a href="/eten/">Eten &amp; drinken</a></li>
+          <li><a href="/muziek/">Muziek</a></li>
+          <li><a href="/makers/">Makers &amp; artiesten</a></li>
+          <li><a href="/community/">Community</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Meedoen</h4>
+        <ul>
+          <li><a href="/aanmelden/">Iets aanmelden</a></li>
+          <li><a href="/samenwerken/">Voor gemeentes &amp; fondsen</a></li>
+          <li><a href="/samenwerken/#ondernemers">Voor ondernemers &amp; venues</a></li>
+          <li><a href="/festival/">Hopi Amor Festival</a></li>
+          <li><a href="/festival/#vip">VIP pre-registratie 2027</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+          <li><a href={site.instagram} rel="noopener" target="_blank">Instagram @hopiamor</a></li>
+          <li><a href={site.linktree} rel="noopener" target="_blank">Linktree</a></li>
+          <li><a href="/over/">Over ons</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© {year} Hopi Amor • Amersfoort, Nederland</span>
+      <span>Hopi amor = veel liefde (Papiamentu)</span>
+    </div>
+  </div>
+</footer>

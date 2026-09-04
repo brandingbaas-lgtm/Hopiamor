@@ -1,0 +1,59 @@
+---
+/**
+ * Progressive form. If PUBLIC_FORM_ENDPOINT is set the data is POSTed as JSON,
+ * otherwise a pre-filled e-mail is opened so nothing gets lost before a
+ * backend is connected.
+ */
+import { site } from '../lib/site';
+interface Props { name: string; subject: string; submitLabel?: string; }
+const { name, subject, submitLabel = 'Versturen' } = Astro.props;
+---
+<form class="form" data-form={name} data-subject={subject} data-endpoint={site.formEndpoint} data-mail={site.email} method="post" novalidate>
+  <input type="hidden" name="formulier" value={name} />
+  <slot />
+  <p class="check"><input type="checkbox" name="akkoord" required /> <span>Ik ga akkoord dat Hopi Amor mijn gegevens gebruikt om contact op te nemen. Geen spam, geen doorverkoop.</span></p>
+  <div>
+    <button class="btn coral" type="submit">{submitLabel}</button>
+  </div>
+  <div class="status" role="status" aria-live="polite"></div>
+</form>
+<script>
+  document.querySelectorAll<HTMLFormElement>('form[data-form]').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const status = form.querySelector<HTMLElement>('.status')!;
+      status.className = 'status';
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      const data = Object.fromEntries(new FormData(form).entries());
+      const endpoint = form.dataset.endpoint;
+      const subject = form.dataset.subject || 'Bericht via hopiamor.nl';
+      if (endpoint) {
+        try {
+          const res = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({ ...data, onderwerp: subject, pagina: location.href }),
+          });
+          if (!res.ok) throw new Error(String(res.status));
+          status.textContent = 'Dankjewel! We hebben je bericht ontvangen en nemen snel contact op. Masha danki.';
+          status.classList.add('ok');
+          form.reset();
+        } catch {
+          status.textContent = 'Versturen lukte niet. Probeer het opnieuw of mail ons direct.';
+          status.classList.add('err');
+        }
+        return;
+      }
+      const body = Object.entries(data)
+        .filter(([k]) => k !== 'akkoord')
+        .map(([k, v]) => `${k}: ${v}`)
+        .join('\n');
+      location.href = `mailto:${form.dataset.mail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      status.textContent = 'Je e-mailprogramma opent met een ingevuld bericht. Verstuur die en we nemen contact op.';
+      status.classList.add('ok');
+    });
+  });
+</script>

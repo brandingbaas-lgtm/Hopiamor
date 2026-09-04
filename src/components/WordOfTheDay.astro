@@ -1,0 +1,10 @@
+---
+import { papiamentu } from '../lib/site';
+const day = Math.floor(Date.now() / 86400000);
+const w = papiamentu[day % papiamentu.length];
+---
+<div class="word">
+  <span class="eyebrow palm" style="margin:0">Papiamentu van vandaag</span>
+  <b>{w.word}</b>
+  <span>{w.meaning}</span>
+</div>

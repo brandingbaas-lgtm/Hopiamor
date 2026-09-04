@@ -1,0 +1,24 @@
+---
+import { formatDate } from '../lib/site';
+interface Props { event: any; }
+const { event } = Astro.props;
+const date = formatDate(event.date);
+---
+<article class:list={['event', { featured: event.featured }]} data-city={event.city} data-type={event.type} data-month={date?.monthKey ?? 'tba'}>
+  <div class:list={['date', { tba: !date }]}>
+    {date ? (<><b>{date.day}</b><span>{date.month}</span></>) : (<b>datum volgt</b>)}
+  </div>
+  <div>
+    <div class="meta"><span class="tag">{event.type}</span>{event.featured && <span class="tag coral">Uitgelicht</span>}{event.status === 'te-bevestigen' && <span class="tag outline">Onder voorbehoud</span>}</div>
+    <h3 style="margin-top:.4rem">{event.title}</h3>
+    <p>{event.summary}</p>
+    <div class="meta">
+      <span>📍 {event.venue ? `${event.venue}, ` : ''}{event.city}</span>
+      {date && <span>🗓 {date.full}</span>}
+      {event.time && <span>⏰ {event.time}</span>}
+      {event.price && <span>🎟 {event.price}</span>}
+      {event.organizer && <span>door {event.organizer}</span>}
+    </div>
+    {event.url && <p style="margin-top:.6rem"><a href={event.url} rel="noopener" target="_blank"><strong>Meer info →</strong></a></p>}
+  </div>
+</article>

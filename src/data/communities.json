@@ -1,0 +1,82 @@
+[
+  {
+    "id": "hopi-amor-amersfoort",
+    "name": "Hopi Amor community Amersfoort",
+    "kind": "Community",
+    "city": "Amersfoort",
+    "summary": "De mensen achter het festival. Domino-avonden, familieteams in de keuken, vrijwilligers en de VIP-lijst voor 2027. Hier begint alles.",
+    "url": "/festival/",
+    "color": "coral",
+    "motif": "people"
+  },
+  {
+    "id": "ninsee",
+    "name": "NiNsee",
+    "kind": "Kennisinstituut",
+    "city": "Amsterdam",
+    "summary": "Nationaal instituut Nederlands slavernijverleden en erfenis. Organiseert de nationale herdenking op 1 juli en deelt kennis en educatie.",
+    "url": "https://www.ninsee.nl",
+    "color": "ink",
+    "motif": "book"
+  },
+  {
+    "id": "ocan",
+    "name": "OCaN",
+    "kind": "Belangenorganisatie",
+    "city": "Landelijk",
+    "summary": "Overlegorgaan Caribische Nederlanders. Belangenbehartiging, netwerk en projecten voor Caribische Nederlanders.",
+    "url": "https://www.ocan.nl",
+    "color": "sea",
+    "motif": "flag"
+  },
+  {
+    "id": "keti-koti-tafel",
+    "name": "Stichting Keti Koti Tafel",
+    "kind": "Dialoog",
+    "city": "Landelijk",
+    "summary": "Dialoogtafels waar mensen met verschillende achtergronden praten over de doorwerking van het slavernijverleden, met rituelen en een gedeelde maaltijd.",
+    "url": "https://www.ketikotitafel.nl",
+    "color": "sun",
+    "motif": "plate"
+  },
+  {
+    "id": "dutch-caribbean-book-club",
+    "name": "Dutch Caribbean Book Club",
+    "kind": "Literair collectief",
+    "city": "Den Haag",
+    "summary": "Leest, bespreekt en programmeert Caribische literatuur in Nederland. Regelmatig literaire programma's op festivals.",
+    "url": "https://www.dutchcaribbeanbookclub.nl",
+    "color": "plum",
+    "motif": "book"
+  },
+  {
+    "id": "caribbean-creativity",
+    "name": "Caribbean Creativity",
+    "kind": "Film & cultuur",
+    "city": "Amsterdam",
+    "summary": "Organiseert Caribische en Afrikaanse filmavonden zoals Reggae Vibrations Film en Afrolijk door het hele land.",
+    "url": "https://www.caribbeancreativity.nl",
+    "color": "palm",
+    "motif": "star"
+  },
+  {
+    "id": "afimo",
+    "name": "AFIMO",
+    "kind": "Vrouwenorganisatie",
+    "city": "Den Haag",
+    "summary": "Afro-Surinaamse vrouwenorganisatie met programma's rond empowerment, mode en cultuur.",
+    "url": "",
+    "color": "coral",
+    "motif": "people"
+  },
+  {
+    "id": "kwaku",
+    "name": "Kwaku",
+    "kind": "Festivalorganisatie",
+    "city": "Amsterdam",
+    "summary": "Organisator van het Kwaku Summer Festival in Zuidoost, al decennialang de zomerse ontmoetingsplek van de Surinaamse en Caribische gemeenschap.",
+    "url": "https://www.kwakufestival.nl",
+    "color": "sun",
+    "motif": "sun"
+  }
+]

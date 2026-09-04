@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ponda-obryan",
+    "name": "Ponda O'Bryan",
+    "discipline": "Percussie & workshops",
+    "base": "Den Haag",
+    "summary": "Percussionist en docent die Afro-Caribische en West-Afrikaanse ritmes doorgeeft in workshops voor jong en oud.",
+    "color": "coral",
+    "motif": "drum",
+    "status": "geverifieerd"
+  },
+  {
+    "id": "winston-scholsberg",
+    "name": "Winston Scholsberg",
+    "discipline": "Anansi-verteller",
+    "base": "Nederland",
+    "summary": "Vertelt de Anansi-verhalen die van West-Afrika via Suriname en de Antillen naar Nederland reisden. Perfect voor scholen en festivals.",
+    "color": "sun",
+    "motif": "book",
+    "status": "geverifieerd"
+  },
+  {
+    "id": "marian-markelo",
+    "name": "Marian Markelo",
+    "discipline": "Winti & erfgoed",
+    "base": "Amsterdam",
+    "summary": "Winti-priesteres en spreker over Afro-Surinaamse spiritualiteit en de doorwerking van het slavernijverleden.",
+    "color": "plum",
+    "motif": "star",
+    "status": "geverifieerd"
+  },
+  {
+    "id": "nathaly-mercera",
+    "name": "Nathaly Mercera",
+    "discipline": "Host & presentatie",
+    "base": "Den Haag",
+    "summary": "Presentator en host van culturele programma's, onder meer bij Festival Sounds of Us.",
+    "color": "sea",
+    "motif": "mic",
+    "status": "geverifieerd"
+  },
+  {
+    "id": "noel-pinedo",
+    "name": "Noël Pinedo",
+    "discipline": "Spoken word",
+    "base": "Nederland",
+    "summary": "Spoken word-artiest die identiteit, migratie en familie in taal vangt.",
+    "color": "ink",
+    "motif": "mic",
+    "status": "geverifieerd"
+  },
+  {
+    "id": "walter-palm",
+    "name": "Walter Palm",
+    "discipline": "Dichter & schrijver",
+    "base": "Curaçao / Nederland",
+    "summary": "Dichter en essayist die schrijft over Curaçao, migratie en Nederland. Vaste naam bij de Dutch Caribbean Book Club.",
+    "color": "sand",
+    "motif": "book",
+    "status": "geverifieerd"
+  }
+]

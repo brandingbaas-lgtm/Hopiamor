@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('magazine')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const categories = [...new Set(posts.map((p) => p.data.category))];
+---
+<Base title="Magazine" description="Verhalen over Afro-Caribische cultuur in Nederland: eten, muziek, erfgoed, gidsen en de mensen die het maken.">
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow">Magazine</span>
+      <h1>Verhalen, gidsen en inspiratie</h1>
+      <p class="lede">Over eten, muziek, erfgoed en de mensen die Afro-Caribische cultuur in Nederland dragen. Geschreven met en voor de community.</p>
+      <div class="filters mt-2" data-filter-root>
+        <button class="chip" aria-pressed="true" data-filter="">Alles</button>
+        {categories.map((c) => <button class="chip" aria-pressed="false" data-filter={c}>{c}</button>)}
+      </div>
+      <div class="grid cols-3" data-filter-list>
+        {posts.map((p) => <div data-category={p.data.category}><ArticleCard post={p} /></div>)}
+      </div>
+    </div>
+  </section>
+  <section class="section sand">
+    <div class="wrap center">
+      <h2>Heb jij een verhaal?</h2>
+      <p class="lede mx">Een familierecept, een portret van een muzikant, een herinnering aan het eiland. We publiceren graag verhalen uit de community, in het Nederlands, Papiamentu, Engels of Sranantongo.</p>
+      <a class="btn coral" href="/aanmelden/#verhaal">Pitch je verhaal</a>
+    </div>
+  </section>
+  <script>
+    const chips = document.querySelectorAll<HTMLButtonElement>('[data-filter-root] .chip');
+    const items = document.querySelectorAll<HTMLElement>('[data-filter-list] > [data-category]');
+    chips.forEach((chip) => chip.addEventListener('click', () => {
+      chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
+      const f = chip.dataset.filter || '';
+      items.forEach((el) => { el.hidden = !!f && el.dataset.category !== f; });
+    }));
+  </script>
+</Base>

@@ -1,0 +1,117 @@
+---
+import Base from '../layouts/Base.astro';
+import Form from '../components/Form.astro';
+import { cities } from '../lib/site';
+---
+<Base title="Aanmelden" description="Meld een evenement, eettent, artiest, maker, organisatie of verhaal aan voor Hopi Amor. Gratis, gecheckt door de redactie.">
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow">Aanmelden</span>
+      <h1>Hopi Amor is van ons allemaal</h1>
+      <p class="lede">De gids en de agenda groeien door jou. Meld iets aan, wij checken het en zetten het online. Gratis, altijd. Kies hieronder wat je wilt aanmelden.</p>
+      <div class="filters mt-2" role="tablist">
+        <button class="chip" role="tab" aria-pressed="true" data-tab="evenement">Evenement</button>
+        <button class="chip" role="tab" aria-pressed="false" data-tab="eettent">Eettent of toko</button>
+        <button class="chip" role="tab" aria-pressed="false" data-tab="artiest">Artiest of maker</button>
+        <button class="chip" role="tab" aria-pressed="false" data-tab="community">Organisatie of groep</button>
+        <button class="chip" role="tab" aria-pressed="false" data-tab="verhaal">Verhaal voor het magazine</button>
+      </div>
+
+      <div class="form-card" id="evenement" data-panel="evenement">
+        <h2>Evenement aanmelden</h2>
+        <Form name="aanmelden-evenement" subject="Aanmelding evenement" submitLabel="Evenement insturen">
+          <label>Naam van het evenement <input type="text" name="titel" required /></label>
+          <div class="two">
+            <label>Datum <input type="date" name="datum" /></label>
+            <label>Tijd <input type="text" name="tijd" placeholder="bijv. 15:00 – 22:00" /></label>
+          </div>
+          <div class="two">
+            <label>Stad <select name="stad">{cities.map((c) => <option>{c}</option>)}<option>Anders</option></select></label>
+            <label>Locatie <input type="text" name="locatie" placeholder="bijv. FLUOR" /></label>
+          </div>
+          <label>Soort <select name="soort"><option>Festival</option><option>Concert</option><option>Feest</option><option>Herdenking & viering</option><option>Workshop</option><option>Community</option><option>Film</option><option>Anders</option></select></label>
+          <label>Korte omschrijving <textarea name="omschrijving" required></textarea></label>
+          <div class="two">
+            <label>Link naar tickets of info <input type="url" name="link" placeholder="https://" /></label>
+            <label>Jouw e-mailadres <input type="email" name="email" required /></label>
+          </div>
+        </Form>
+      </div>
+
+      <div class="form-card" id="eettent" data-panel="eettent" hidden>
+        <h2>Eettent, toko of thuiskok aanmelden</h2>
+        <Form name="aanmelden-eettent" subject="Aanmelding eettent" submitLabel="Adres insturen">
+          <label>Naam <input type="text" name="naam" required /></label>
+          <div class="two">
+            <label>Stad <select name="stad">{cities.map((c) => <option>{c}</option>)}<option>Anders</option></select></label>
+            <label>Adres <input type="text" name="adres" /></label>
+          </div>
+          <label>Keuken <input type="text" name="keuken" placeholder="bijv. Antilliaans, Surinaams-Javaans" /></label>
+          <label>Waarom moet dit in de gids? <textarea name="waarom" required placeholder="bijv. De beste kabritu stoba buiten Willemstad."></textarea></label>
+          <div class="two">
+            <label>Ben je de eigenaar? <select name="eigenaar"><option>Nee, ik ben gast</option><option>Ja</option></select></label>
+            <label>Jouw e-mailadres <input type="email" name="email" required /></label>
+          </div>
+        </Form>
+      </div>
+
+      <div class="form-card" id="artiest" data-panel="artiest" hidden>
+        <h2>Artiest of maker aanmelden</h2>
+        <Form name="aanmelden-artiest" subject="Aanmelding artiest of maker" submitLabel="Profiel insturen">
+          <label>Artiestennaam <input type="text" name="naam" required /></label>
+          <div class="two">
+            <label>Discipline <select name="discipline"><option>Muziek: band</option><option>Muziek: solo</option><option>DJ</option><option>Dans</option><option>Spoken word / literatuur</option><option>Verteller</option><option>Beeldende kunst</option><option>Mode</option><option>Fotografie / film</option><option>Theater</option><option>Workshops</option><option>Anders</option></select></label>
+            <label>Standplaats <input type="text" name="standplaats" placeholder="bijv. Rotterdam" /></label>
+          </div>
+          <label>Genres of stijl <input type="text" name="genres" placeholder="bijv. tumba, bachata, afrobeats" /></label>
+          <label>Korte bio (max 3 zinnen) <textarea name="bio" required></textarea></label>
+          <div class="two">
+            <label>Link (Instagram, Spotify, website) <input type="url" name="link" placeholder="https://" /></label>
+            <label>E-mailadres voor boekingen <input type="email" name="email" required /></label>
+          </div>
+          <p class="check" style="margin:0"><input type="checkbox" name="hopiamor2027" value="ja" /> <span>Ik wil in aanmerking komen voor de line-up van Hopi Amor 2027.</span></p>
+        </Form>
+      </div>
+
+      <div class="form-card" id="community" data-panel="community" hidden>
+        <h2>Organisatie of groep aanmelden</h2>
+        <Form name="aanmelden-community" subject="Aanmelding organisatie of groep" submitLabel="Insturen">
+          <label>Naam organisatie of groep <input type="text" name="naam" required /></label>
+          <div class="two">
+            <label>Soort <select name="soort"><option>Stichting of vereniging</option><option>Informele groep</option><option>Kennisinstituut</option><option>Kerk of geloofsgemeenschap</option><option>Sport of spel (bijv. domino)</option><option>Anders</option></select></label>
+            <label>Stad <select name="stad">{cities.map((c) => <option>{c}</option>)}<option>Anders</option></select></label>
+          </div>
+          <label>Wat doen jullie? <textarea name="omschrijving" required></textarea></label>
+          <div class="two">
+            <label>Website of social <input type="url" name="link" placeholder="https://" /></label>
+            <label>Contact e-mailadres <input type="email" name="email" required /></label>
+          </div>
+        </Form>
+      </div>
+
+      <div class="form-card" id="verhaal" data-panel="verhaal" hidden>
+        <h2>Pitch een verhaal voor het magazine</h2>
+        <Form name="aanmelden-verhaal" subject="Pitch verhaal magazine" submitLabel="Pitch insturen">
+          <label>Jouw naam <input type="text" name="naam" required /></label>
+          <label>Waar gaat het over? <textarea name="pitch" required placeholder="bijv. Het recept van mijn oma uit Otrobanda en wat het betekent voor onze familie in Almere."></textarea></label>
+          <div class="two">
+            <label>Taal <select name="taal"><option>Nederlands</option><option>Papiamentu</option><option>Engels</option><option>Sranantongo</option><option>Mix</option></select></label>
+            <label>E-mailadres <input type="email" name="email" required /></label>
+          </div>
+        </Form>
+      </div>
+    </div>
+  </section>
+  <script>
+    const tabs = document.querySelectorAll<HTMLButtonElement>('[data-tab]');
+    const panels = document.querySelectorAll<HTMLElement>('[data-panel]');
+    function show(id: string) {
+      tabs.forEach((t) => t.setAttribute('aria-pressed', String(t.dataset.tab === id)));
+      panels.forEach((p) => { p.hidden = p.dataset.panel !== id; });
+    }
+    tabs.forEach((t) => t.addEventListener('click', () => { show(t.dataset.tab!); history.replaceState(null, '', `#${t.dataset.tab}`); }));
+    const initial = location.hash.replace('#', '');
+    if (initial && [...panels].some((p) => p.dataset.panel === initial)) show(initial);
+    window.addEventListener('hashchange', () => { const h = location.hash.replace('#', ''); if ([...panels].some((p) => p.dataset.panel === h)) show(h); });
+  </script>
+</Base>

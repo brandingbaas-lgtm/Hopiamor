@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import Art from '../components/Art.astro';
+import communities from '../data/communities.json';
+---
+<Base title="Community" description="Organisaties, netwerken en groepen van de Afro-Caribische community in Nederland. Vind je mensen, of start straks je eigen groep op Hopi Amor.">
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow">Community</span>
+      <h1>Vind je mensen</h1>
+      <p class="lede">Van kennisinstituten tot buurtclubs. Dit zijn de organisaties en netwerken waar de community samenkomt. Binnenkort kun je hier ook zelf een groep starten: een dominoclub, een leeskring, een kookgroep of een oudergroep in jouw stad.</p>
+      <div class="grid cols-3 mt-2">
+        {communities.map((c) => (
+          <article class="card">
+            <div class="cover"><Art color={c.color as any} motif={c.motif as any} /></div>
+            <div class="body">
+              <div class="meta"><span class="tag plum">{c.kind}</span><span>📍 {c.city}</span></div>
+              <h3>{c.url ? <a href={c.url} rel={c.url.startsWith('http') ? 'noopener' : undefined} target={c.url.startsWith('http') ? '_blank' : undefined}>{c.name}</a> : c.name}</h3>
+              <p>{c.summary}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section sand">
+    <div class="wrap">
+      <div class="section-head"><div><span class="eyebrow palm">Roadmap</span><h2>Wat community op Hopi Amor gaat worden</h2></div></div>
+      <div class="grid cols-3">
+        <div class="prop"><div class="n">Nu</div><div><h3>Gids & agenda</h3><p>Organisaties, evenementen en makers vindbaar op één plek. Aanmelden is gratis.</p></div></div>
+        <div class="prop"><div class="n">2027</div><div><h3>Groepen</h3><p>Start je eigen groep per stad of interesse: domino, koken, lezen, ouders, ondernemers. Met agenda en ledenlijst.</p></div></div>
+        <div class="prop"><div class="n">Later</div><div><h3>Samenwerkingen</h3><p>Groepen koppelen aan gemeentes, podia en fondsen voor projecten in hun eigen stad.</p></div></div>
+      </div>
+      <div class="btn-row mt-2"><a class="btn coral" href="/aanmelden/#community">Organisatie of groep aanmelden</a><a class="btn ghost" href="/#nieuwsbrief">Hou me op de hoogte</a></div>
+    </div>
+  </section>
+</Base>

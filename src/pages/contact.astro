@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import Form from '../components/Form.astro';
+import { site } from '../lib/site';
+---
+<Base title="Contact" description="Neem contact op met Hopi Amor: vragen, pers, samenwerking of gewoon hallo zeggen.">
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Contact</span>
+        <h1>Bon dia! Waar kunnen we mee helpen?</h1>
+        <p class="lede">Vragen over het festival, een tip voor de gids, pers of een samenwerking. Mail, DM of gebruik het formulier.</p>
+        <ul style="list-style:none;padding:0;display:grid;gap:.6rem">
+          <li>✉️ <a href={`mailto:${site.email}`}>{site.email}</a></li>
+          <li>📸 <a href={site.instagram} rel="noopener" target="_blank">Instagram @hopiamor</a></li>
+          <li>🔗 <a href={site.linktree} rel="noopener" target="_blank">linktr.ee/hopiamor</a></li>
+          <li>📍 Amersfoort, Nederland</li>
+        </ul>
+        <p class="small">Gemeente, fonds of podium? Gebruik liever het <a href="/samenwerken/#gesprek">samenwerkingsformulier</a>, dan hebben we meteen de juiste info.</p>
+      </div>
+      <div class="form-card">
+        <Form name="contact" subject="Bericht via hopiamor.nl" submitLabel="Verstuur">
+          <div class="two">
+            <label>Naam <input type="text" name="naam" required /></label>
+            <label>E-mailadres <input type="email" name="email" required /></label>
+          </div>
+          <label>Onderwerp <select name="onderwerp"><option>Algemene vraag</option><option>Festival</option><option>Tip voor de gids</option><option>Pers</option><option>Samenwerking</option><option>Anders</option></select></label>
+          <label>Bericht <textarea name="bericht" required></textarea></label>
+        </Form>
+      </div>
+    </div>
+  </section>
+</Base>
