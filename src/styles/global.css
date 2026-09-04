@@ -1,21 +1,22 @@
 /* ==========================================================
    Hopi Amor — platform stylesheet
-   Warm editorial look: cream paper, ink typography,
-   Caribbean accents (sun, coral, sea, palm).
+   Warm editorial look, closer to the original festival branding:
+   sunset marigold, papaya coral and hibiscus red carry the page,
+   with sea and palm as smaller tropical accents.
    ========================================================== */
 :root {
-  --ink: #16120f;
-  --ink-soft: #3d342d;
-  --muted: #6f6357;
-  --paper: #fbf5ec;
-  --sand: #f1e6d3;
-  --line: #e2d5c1;
-  --sun: #f2b33d;
-  --coral: #e4553b;
-  --coral-deep: #b83d27;
-  --sea: #1f7a8c;
-  --palm: #2e6b4f;
-  --plum: #5b2a86;
+  --ink: #1a1108;
+  --ink-soft: #40301f;
+  --muted: #7a6a52;
+  --paper: #fdf2e1;
+  --sand: #f6e3c3;
+  --line: #ecd7ae;
+  --sun: #f3a323;
+  --coral: #ef5a2e;
+  --coral-deep: #a83a1f;
+  --sea: #0f8a86;
+  --palm: #3c7a3f;
+  --plum: #9c2f45;
   --white: #ffffff;
 
   --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;

@@ -1,0 +1,50 @@
+---
+/**
+ * Hopi Amor wordmark + icon. Icon is a sunburst with a heart at its
+ * core (hopi amor = "much love"). `theme="dark"` swaps the wordmark
+ * for use on the ink/ticker background.
+ */
+interface Props {
+  size?: number;
+  tagline?: boolean;
+  theme?: 'light' | 'dark';
+  class?: string;
+}
+const { size = 42, tagline = true, theme = 'light', class: className = '' } = Astro.props;
+const dark = theme === 'dark';
+---
+<a class={`brand ${className}`} href="/" aria-label="Hopi Amor home" data-theme={theme}>
+  <svg class="mark" width={size} height={size} viewBox="0 0 48 48" aria-hidden="true">
+    <g>
+      {Array.from({ length: 10 }).map((_, i) => {
+        const a = (i * Math.PI * 2) / 10;
+        const x = 24 + Math.cos(a) * 23, y = 24 + Math.sin(a) * 23;
+        const bx = 24 + Math.cos(a) * 13, y2 = 24 + Math.sin(a) * 13;
+        const w = (Math.PI * 2 * 13) / 10 / 2.6;
+        const ax = 24 + Math.cos(a - w) * 13, ay = 24 + Math.sin(a - w) * 13;
+        const cx = 24 + Math.cos(a + w) * 13, cy = 24 + Math.sin(a + w) * 13;
+        return <polygon points={`${ax},${ay} ${x},${y} ${cx},${cy}`} fill="var(--sun)" />;
+      })}
+      <circle cx="24" cy="24" r="13.5" fill="var(--sun)" />
+      <path
+        d="M24 33.5 C 15.5 27.5 11 22.7 11 16.6 C 11 12.6 14 9.5 17.7 9.5 C 20.4 9.5 22.7 11.1 24 13.3 C 25.3 11.1 27.6 9.5 30.3 9.5 C 34 9.5 37 12.6 37 16.6 C 37 22.7 32.5 27.5 24 33.5 Z"
+        fill="var(--coral)"
+      />
+    </g>
+  </svg>
+  <span class="brand-text">
+    <span class="brand-word">
+      <em>Hopi</em><em>Amor</em>
+    </span>
+    {tagline && <small>Afro-Caribisch Nederland</small>}
+  </span>
+</a>
+
+<style>
+  .brand-word { display: inline-flex; gap: 0.32em; }
+  .brand-word em { font-style: normal; }
+  .brand-word em:first-child { color: var(--ink); }
+  .brand-word em:last-child { color: var(--coral-deep); }
+  a.brand[data-theme='dark'] .brand-word em:first-child { color: var(--paper); }
+  a.brand[data-theme='dark'] .brand-word em:last-child { color: var(--sun); }
+</style>
