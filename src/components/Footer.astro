@@ -1,13 +1,14 @@
 ---
 import { site } from '../lib/site';
+import Logo from './Logo.astro';
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
   <div class="wrap">
     <div class="cols">
       <div>
-        <h4>{site.name}</h4>
-        <p style="max-width:34ch">Het platform voor Afro-Caribische cultuur in Nederland. Magazine, agenda, gids en community. Ontstaan uit het Caribbean Family Festival in Amersfoort.</p>
+        <Logo theme="dark" tagline={false} class="footer-brand" />
+        <p style="max-width:34ch;margin-top:1rem">Het platform voor Afro-Caribische cultuur in Nederland. Magazine, agenda, gids en community. Ontstaan uit het Caribbean Family Festival in Amersfoort.</p>
         <p><strong style="color:var(--sun)">Nos ta huntu.</strong></p>
       </div>
       <div>
