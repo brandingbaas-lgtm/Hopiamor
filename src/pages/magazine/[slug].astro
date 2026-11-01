@@ -23,7 +23,7 @@ const related = (await getCollection('magazine')).filter((p) => p.id !== post.id
         <p class="lede">{d.description}</p>
         <div class="byline"><span>{d.author}</span><span>{date}</span><span>{d.readingTime} min lezen</span></div>
       </div>
-      <div class="article-cover"><Art color={d.color} motif={d.motif} image={d.image} alt={d.title} /></div>
+      <div class="article-cover"><Art color={d.color} motif={d.motif} label={d.coverWord} kicker={d.category} image={d.image} alt={d.title} /></div>
     </header>
     <div class="wrap"><div class="prose"><Content /></div></div>
   </article>

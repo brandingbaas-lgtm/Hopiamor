@@ -8,7 +8,7 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
   <span>
     {Array.from({ length: 2 }).map(() => (
       <>
-        Nos ta huntu <i>•</i> Magazine <i>•</i> Agenda <i>•</i> Eten <i>•</i> Muziek <i>•</i> Makers <i>•</i> Community <i>•</i> Hopi Amor Festival 2027 <i>•</i> Amersfoort en heel Nederland <i>•</i>
+        Nos ta huntu <i>■</i> Magazine <i>■</i> Agenda <i>■</i> Eten <i>■</i> Muziek <i>■</i> Makers <i>■</i> Community <i>■</i> Hopi Amor Festival 2027 <i>■</i> Amersfoort en heel Nederland <i>■</i>
       </>
     ))}
   </span>
@@ -21,7 +21,7 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
       {nav.map((item) => (
         <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
       ))}
-      <a class="btn sun" href="/samenwerken/">Samenwerken</a>
+      <a class="nav-cta" href="/samenwerken/" aria-current={isActive('/samenwerken/') ? 'page' : undefined}>Samenwerken</a>
     </nav>
   </div>
 </header>

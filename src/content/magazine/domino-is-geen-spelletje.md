@@ -6,6 +6,7 @@ category: "Erfgoed"
 tagColor: sun
 color: sun
 motif: domino
+coverWord: "Domino"
 readingTime: 4
 featured: true
 ---

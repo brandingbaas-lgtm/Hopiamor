@@ -6,6 +6,7 @@ category: "Eten"
 tagColor: palm
 color: palm
 motif: plate
+coverWord: "Kuminda"
 readingTime: 4
 featured: false
 ---

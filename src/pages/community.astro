@@ -12,9 +12,9 @@ import communities from '../data/communities.json';
       <div class="grid cols-3 mt-2">
         {communities.map((c) => (
           <article class="card">
-            <div class="cover"><Art color={c.color as any} motif={c.motif as any} /></div>
+            <div class="cover"><Art color={c.color as any} motif={c.motif as any} label={c.name} kicker={c.kind} /></div>
             <div class="body">
-              <div class="meta"><span class="tag plum">{c.kind}</span><span>📍 {c.city}</span></div>
+              <div class="meta"><span class="tag plum">{c.kind}</span><span>{c.city}</span></div>
               <h3>{c.url ? <a href={c.url} rel={c.url.startsWith('http') ? 'noopener' : undefined} target={c.url.startsWith('http') ? '_blank' : undefined}>{c.name}</a> : c.name}</h3>
               <p>{c.summary}</p>
             </div>

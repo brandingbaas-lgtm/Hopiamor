@@ -6,6 +6,7 @@ category: "Erfgoed"
 tagColor: plum
 color: plum
 motif: flag
+coverWord: "Keti Koti"
 readingTime: 5
 featured: false
 ---

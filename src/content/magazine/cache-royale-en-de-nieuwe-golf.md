@@ -6,6 +6,7 @@ category: "Muziek"
 tagColor: coral
 color: ink
 motif: mic
+coverWord: "Músika"
 readingTime: 4
 featured: false
 ---
