@@ -6,6 +6,7 @@ category: "Gids"
 tagColor: sea
 color: sea
 motif: waves
+coverWord: "033"
 readingTime: 4
 featured: false
 ---

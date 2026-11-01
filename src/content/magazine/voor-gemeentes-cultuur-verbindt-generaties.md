@@ -6,6 +6,7 @@ category: "Samenwerken"
 tagColor: sea
 color: sand
 motif: people
+coverWord: "Huntu"
 readingTime: 5
 featured: false
 ---

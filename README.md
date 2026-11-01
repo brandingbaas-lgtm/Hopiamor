@@ -7,6 +7,7 @@ Zie [`docs/analyse-huidige-website.md`](docs/analyse-huidige-website.md) voor de
 ## Stack
 
 - [Astro 7](https://astro.build) (statische site, geen backend nodig)
+- Lettertypes zelf gehost via Fontsource (Anton, Archivo, Source Serif 4): geen verzoeken naar Google
 - Plain CSS in `src/styles/global.css` (design tokens: `--sun`, `--coral`, `--sea`, `--palm`, `--plum`, `--ink`, `--paper`)
 - Content collections (markdown) voor het magazine, JSON voor de gidsen
 - `@astrojs/sitemap` voor SEO
@@ -48,7 +49,8 @@ date: 2026-09-01
 category: "Eten"          # vrije tekst, wordt filter op /magazine
 tagColor: palm            # coral | sun | sea | palm | plum
 color: palm               # kleur van de cover
-motif: plate              # sun | waves | domino | palm | drum | plate | mic | people | star | book | flag
+motif: plate              # bepaalt het standaard Papiamentu-woord op de omslag
+coverWord: "Kuminda"      # optioneel: eigen woord op de omslag
 image: /images/foto.jpg   # optioneel, vervangt de grafische cover
 readingTime: 4
 featured: false

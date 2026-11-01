@@ -13,7 +13,7 @@ const wanted = ['Dans', 'Beeldende kunst', 'Mode', 'Fotografie & film', 'Theater
       <div class="grid cols-3 mt-2">
         {makers.map((m) => (
           <article class="card">
-            <div class="cover"><Art color={m.color as any} motif={m.motif as any} /></div>
+            <div class="cover"><Art color={m.color as any} motif={m.motif as any} label={m.name} kicker={m.discipline} /></div>
             <div class="body">
               <div class="meta"><span class="tag palm">{m.discipline}</span><span>{m.base}</span></div>
               <h3>{m.name}</h3>

@@ -6,6 +6,7 @@ category: "Manifest"
 tagColor: coral
 color: coral
 motif: sun
+coverWord: "Nos ta huntu"
 readingTime: 5
 featured: true
 ---

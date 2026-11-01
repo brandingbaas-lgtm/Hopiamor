@@ -12,6 +12,7 @@ const magazine = defineCollection({
     tagColor: z.enum(['coral', 'sun', 'sea', 'palm', 'plum']).optional(),
     color: z.enum(['sun', 'coral', 'sea', 'palm', 'plum', 'ink', 'sand']).default('sun'),
     motif: z.enum(['sun', 'waves', 'domino', 'palm', 'drum', 'plate', 'mic', 'people', 'star', 'book', 'flag']).default('sun'),
+    coverWord: z.string().optional(),
     image: z.string().optional(),
     author: z.string().default('Redactie Hopi Amor'),
     readingTime: z.number().default(4),

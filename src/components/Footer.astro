@@ -1,14 +1,13 @@
 ---
 import { site } from '../lib/site';
-import Logo from './Logo.astro';
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
   <div class="wrap">
     <div class="cols">
       <div>
-        <Logo theme="dark" tagline={false} class="footer-brand" />
-        <p style="max-width:34ch;margin-top:1rem">Het platform voor Afro-Caribische cultuur in Nederland. Magazine, agenda, gids en community. Ontstaan uit het Caribbean Family Festival in Amersfoort.</p>
+        <h4>Over Hopi Amor</h4>
+        <p style="max-width:34ch">Magazine, agenda en gids voor Afro-Caribische cultuur in Nederland. Ontstaan uit het Caribbean Family Festival in FLUOR Amersfoort.</p>
         <p><strong style="color:var(--sun)">Nos ta huntu.</strong></p>
       </div>
       <div>
@@ -44,8 +43,9 @@ const year = new Date().getFullYear();
       </div>
     </div>
     <div class="bottom">
-      <span>© {year} Hopi Amor • Amersfoort, Nederland</span>
+      <span>© {year} Hopi Amor, Amersfoort</span>
       <span>Hopi amor = veel liefde (Papiamentu)</span>
     </div>
+    <p class="footer-plate" aria-hidden="true"><span>Hopi</span><span>Amor</span></p>
   </div>
 </footer>

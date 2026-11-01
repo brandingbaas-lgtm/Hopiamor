@@ -18,10 +18,7 @@ const lineup = ['Caché Royale', 'Angel D', 'Ray Vibes', 'Skinto', 'Tera Kora', 
         <p class="lede">Dankjewel Amersfoort! Op zondag 24 mei 2026 stroomde FLUOR vol met onvoorwaardelijke liefde, dampende ritmes, meeslepende dominomatches en herinneringen voor het leven.</p>
         <div class="btn-row mt-1"><a class="btn coral" href="#vip">VIP pre-registratie 2027</a><a class="btn ghost" href="#terugblik">Terugblik</a></div>
       </div>
-      <div class="hero-art">
-        <div style="position:absolute;inset:0;border-radius:var(--radius);overflow:hidden"><Art color="coral" motif="people" /></div>
-        <div style="position:absolute;right:-6%;bottom:-6%;width:44%;aspect-ratio:1;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)"><Art color="sun" motif="domino" /></div>
-      </div>
+      <div class="hero-art"><Art color="coral" label="24 mei 2026" kicker="FLUOR Amersfoort" /></div>
     </div>
   </section>
 
@@ -52,20 +49,20 @@ const lineup = ['Caché Royale', 'Angel D', 'Ray Vibes', 'Skinto', 'Tera Kora', 
         </ul>
         <p class="mt-1"><strong>Line-up 2026:</strong> {lineup.join(' • ')}</p>
       </div>
-      <div class="art-block"><Art color="sea" motif="drum" /></div>
+      <div class="art-block"><Art color="sea" motif="drum" kicker="Live in FLUOR" /></div>
     </div>
   </section>
 
   <section class="section sand">
     <div class="wrap">
       <div class="section-head"><div><span class="eyebrow">Onze bezoekers aan het woord</span><h2>"Dit is echt thuiskomen"</h2></div></div>
-      <div class="grid cols-3">{quotes.map((q) => <blockquote class="quote"><p>"{q.text}"</p><cite>{q.who}</cite></blockquote>)}</div>
+      <div class="grid cols-3">{quotes.map((q) => <blockquote class="quote"><p>{q.text}</p><cite>{q.who}</cite></blockquote>)}</div>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap split">
-      <div class="art-block"><Art color="plum" motif="domino" /></div>
+      <div class="art-block"><Art color="ink" motif="domino" kicker="8 koppels, 7 rondes" /></div>
       <div>
         <span class="eyebrow plum">Domino Vibes</span>
         <h2>Meer dan een spel. Dit is een strijd om eer.</h2>

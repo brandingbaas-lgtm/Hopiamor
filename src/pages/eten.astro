@@ -18,12 +18,12 @@ const wanted = ['Amersfoort', 'Utrecht', 'Almere', 'Den Haag', 'Tilburg', 'Groni
       <div class="grid cols-3" data-food>
         {food.map((f) => (
           <article class="card" data-city={f.city}>
-            <div class="cover"><Art color={f.color as any} motif="plate" /></div>
+            <div class="cover"><Art color={f.color as any} motif="plate" label={f.name} kicker={f.kitchen} /></div>
             <div class="body">
               <div class="meta"><span class="tag palm">{f.kitchen}</span>{f.status !== 'geverifieerd' && <span class="tag outline">Nog te checken</span>}</div>
               <h3>{f.name}</h3>
               <p>{f.summary}</p>
-              <div class="meta"><span>📍 {f.city}{f.area ? `, ${f.area}` : ''}</span><span>⭐ {f.signature}</span></div>
+              <div class="meta"><span>{f.city}{f.area ? `, ${f.area}` : ''}</span><span>Bestel: {f.signature}</span></div>
               <div class="foot"><div class="meta">{f.tags.map((t) => <span>#{t}</span>)}</div></div>
             </div>
           </article>
@@ -43,7 +43,7 @@ const wanted = ['Amersfoort', 'Utrecht', 'Almere', 'Den Haag', 'Tilburg', 'Groni
   </section>
   <section class="section sand">
     <div class="wrap split">
-      <div class="art-block"><Art color="sun" motif="plate" /></div>
+      <div class="art-block"><Art color="sun" motif="plate" kicker="Voor ondernemers" /></div>
       <div>
         <span class="eyebrow">Ondernemers</span>
         <h2>Heb je een eettent, toko of cateringbedrijf?</h2>

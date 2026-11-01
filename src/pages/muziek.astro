@@ -15,13 +15,13 @@ const genres = [...new Set(music.flatMap((m) => m.genres))].sort();
       <div class="filters mt-2"><span class="small">Genres in de gids:</span>{genres.map((g) => <span class="tag">{g}</span>)}</div>
     </div>
   </section>
-  <section class="section ink" style="padding-top:0;margin-top:1rem">
-    <div class="wrap" style="padding-top:3rem">
+  <section class="section ink">
+    <div class="wrap">
       <div class="section-head"><div><span class="eyebrow">Hopi Amor 2026</span><h2>Ze stonden in FLUOR</h2></div></div>
       <div class="grid cols-3">
         {festival.map((a) => (
           <article class="card">
-            <div class="cover square"><Art color={a.color as any} motif={a.motif as any} /></div>
+            <div class="cover square"><Art color={a.color as any} motif={a.motif as any} label={a.name} kicker={a.kind} /></div>
             <div class="body">
               <div class="meta"><span class="tag sun">{a.kind}</span><span>{a.base}</span></div>
               <h3>{a.name}</h3>
@@ -39,7 +39,7 @@ const genres = [...new Set(music.flatMap((m) => m.genres))].sort();
       <div class="grid cols-3">
         {others.map((a) => (
           <article class="card">
-            <div class="cover square"><Art color={a.color as any} motif={a.motif as any} /></div>
+            <div class="cover square"><Art color={a.color as any} motif={a.motif as any} label={a.name} kicker={a.kind} /></div>
             <div class="body">
               <div class="meta"><span class="tag sea">{a.kind}</span><span>{a.base}</span></div>
               <h3>{a.name}</h3>
