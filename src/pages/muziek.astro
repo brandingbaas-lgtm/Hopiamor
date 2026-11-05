@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Art from '../components/Art.astro';
+import { getPhoto } from '../lib/photos';
 import music from '../data/music.json';
 const festival = music.filter((m) => m.hopiAmor);
 const others = music.filter((m) => !m.hopiAmor);
@@ -21,7 +22,7 @@ const genres = [...new Set(music.flatMap((m) => m.genres))].sort();
       <div class="grid cols-3">
         {festival.map((a) => (
           <article class="card">
-            <div class="cover square"><Art color={a.color as any} motif={a.motif as any} label={a.name} kicker={a.kind} /></div>
+            <div class="cover square"><Art photo={getPhoto(a.photo)} sizes="(max-width: 640px) 100vw, 33vw" color={a.color as any} motif={a.motif as any} label={a.name} kicker={a.kind} /></div>
             <div class="body">
               <div class="meta"><span class="tag sun">{a.kind}</span><span>{a.base}</span></div>
               <h3>{a.name}</h3>
@@ -39,7 +40,7 @@ const genres = [...new Set(music.flatMap((m) => m.genres))].sort();
       <div class="grid cols-3">
         {others.map((a) => (
           <article class="card">
-            <div class="cover square"><Art color={a.color as any} motif={a.motif as any} label={a.name} kicker={a.kind} /></div>
+            <div class="cover square"><Art photo={getPhoto(a.photo)} sizes="(max-width: 640px) 100vw, 33vw" color={a.color as any} motif={a.motif as any} label={a.name} kicker={a.kind} /></div>
             <div class="body">
               <div class="meta"><span class="tag sea">{a.kind}</span><span>{a.base}</span></div>
               <h3>{a.name}</h3>

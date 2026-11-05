@@ -407,3 +407,20 @@ p { margin: 0 0 1em; }
 .notice { padding: 0.8rem 1rem; border-left: 4px solid var(--sun); background: var(--sand); font-size: 0.9rem; color: var(--ink-soft); }
 .table-wrap { overflow-x: auto; }
 @media (max-width: 600px) { .issue-line span:last-child { display: none; } }
+
+/* Photos */
+.art-photo, .photo { display: block; width: 100%; height: 100%; object-fit: cover; }
+.article-cover-wrap { margin: 0; }
+.credit { width: min(1100px, 100% - 2 * var(--gutter)); margin: 0.6rem auto 0; font-size: 0.74rem; color: var(--muted); letter-spacing: 0.02em; }
+.credit a { color: inherit; }
+.event.has-photo { grid-template-columns: 84px 1fr 150px; }
+.event-photo { aspect-ratio: 1; overflow: hidden; align-self: start; }
+@media (max-width: 700px) {
+  .event.has-photo { grid-template-columns: 76px 1fr; }
+  .event-photo { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+}
+.beeld-list { display: grid; gap: 0; }
+.beeld-item { display: grid; grid-template-columns: 180px 1fr; gap: 1.2rem; border-top: 1px solid var(--ink); padding: 1rem 0; align-items: start; }
+.beeld-item .thumb { aspect-ratio: 4 / 3; overflow: hidden; }
+.beeld-item p { margin: 0.2rem 0; font-size: 0.95rem; }
+@media (max-width: 600px) { .beeld-item { grid-template-columns: 110px 1fr; } }

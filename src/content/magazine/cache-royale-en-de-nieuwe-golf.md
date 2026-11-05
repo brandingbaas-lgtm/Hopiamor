@@ -7,6 +7,7 @@ tagColor: coral
 color: ink
 motif: mic
 coverWord: "Músika"
+photo: "broederliefde"
 readingTime: 4
 featured: false
 ---

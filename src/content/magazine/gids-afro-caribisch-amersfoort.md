@@ -7,6 +7,7 @@ tagColor: sea
 color: sea
 motif: waves
 coverWord: "033"
+photo: "fluor"
 readingTime: 4
 featured: false
 ---

@@ -7,6 +7,7 @@ tagColor: palm
 color: palm
 motif: plate
 coverWord: "Kuminda"
+photo: "pastechi"
 readingTime: 4
 featured: false
 ---

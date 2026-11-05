@@ -7,6 +7,7 @@ tagColor: sun
 color: sun
 motif: domino
 coverWord: "Domino"
+photo: "domino"
 readingTime: 4
 featured: true
 ---

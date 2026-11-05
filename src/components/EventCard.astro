@@ -1,11 +1,14 @@
 ---
 import { formatDate } from '../lib/site';
+import { getPhoto } from '../lib/photos';
+import Photo from './Photo.astro';
 interface Props { event: any; }
 const { event } = Astro.props;
 const date = formatDate(event.date);
+const photo = getPhoto(event.photo);
 const isExternal = event.url?.startsWith('http');
 ---
-<article class:list={['event', { featured: event.featured }]}>
+<article class:list={['event', { featured: event.featured, 'has-photo': !!photo }]}>
   <div class:list={['date', { tba: !date }]}>
     {date ? (<><b>{date.day}</b><span>{date.month}</span></>) : (<b>Datum volgt</b>)}
   </div>
@@ -26,4 +29,5 @@ const isExternal = event.url?.startsWith('http');
     </dl>
     {event.url && <a class="more" href={event.url} rel={isExternal ? 'noopener' : undefined} target={isExternal ? '_blank' : undefined}>Meer info</a>}
   </div>
+  {photo && <div class="event-photo"><Photo photo={photo} id={photo.id} sizes="(max-width: 700px) 100vw, 150px" /></div>}
 </article>

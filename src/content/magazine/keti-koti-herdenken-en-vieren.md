@@ -7,6 +7,7 @@ tagColor: plum
 color: plum
 motif: flag
 coverWord: "Keti Koti"
+photo: "bigi-spikri-2018"
 readingTime: 5
 featured: false
 ---

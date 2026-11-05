@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import { allPhotos } from '../lib/photos';
+const items = Object.entries(allPhotos);
+---
+<Base title="Beeldverantwoording" description="Herkomst en licenties van de foto's op Hopi Amor.">
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow">Beeldverantwoording</span>
+      <h1>Wie maakte de foto's?</h1>
+      <p class="lede">Zolang we nog geen eigen fotoarchief hebben, gebruiken we foto's van Wikimedia Commons met een vrije licentie. Hieronder staat per foto wie hem maakte en onder welke voorwaarden. Heb je zelf foto's van Caribisch Nederland die we mogen gebruiken? <a href="/aanmelden/">Laat het weten</a>.</p>
+      <div class="beeld-list mt-2">
+        {items.map(([id, p]) => (
+          <div class="beeld-item" id={id}>
+            <div class="thumb"><Photo photo={p} id={id} sizes="180px" /></div>
+            <div>
+              <h3>{p.caption}</h3>
+              <p>Foto: <a href={p.source} rel="noopener" target="_blank">{p.author}</a>, via Wikimedia Commons.</p>
+              <p>Licentie: <a href={p.licenseUrl} rel="noopener" target="_blank">{p.license}</a>{p.license !== 'CC0' && ", foto's zijn verkleind en bijgesneden"}.</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

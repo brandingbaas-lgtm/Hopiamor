@@ -17,7 +17,8 @@
     "summary": "Nationaal instituut Nederlands slavernijverleden en erfenis. Organiseert de nationale herdenking op 1 juli en deelt kennis en educatie.",
     "url": "https://www.ninsee.nl",
     "color": "ink",
-    "motif": "book"
+    "motif": "book",
+    "photo": "slavernijmonument"
   },
   {
     "id": "ocan",
@@ -77,6 +78,7 @@
     "summary": "Organisator van het Kwaku Summer Festival in Zuidoost, al decennialang de zomerse ontmoetingsplek van de Surinaamse en Caribische gemeenschap.",
     "url": "https://www.kwakufestival.nl",
     "color": "sun",
-    "motif": "sun"
+    "motif": "sun",
+    "photo": "kwaku"
   }
 ]
