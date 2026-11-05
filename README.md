@@ -63,9 +63,7 @@ featured: false
 
 ## Foto's
 
-Foto's staan in `src/data/photos.json` (bron, maker, licentie, alt-tekst). Een artikel, eetadres, artiest, organisatie of evenement verwijst ernaar met `photo: "<id>"`. Op Vercel haalt Astro de foto's tijdens de build op van Wikimedia Commons en zet ze om naar geoptimaliseerde WebP-bestanden; de pagina `/beeld/` toont automatisch de bronvermelding van elke foto.
-
-Lokaal bouwen zonder internet naar Wikimedia: `HOPI_HOTLINK=1 npm run build` (de foto's worden dan direct vanaf Wikimedia geladen in plaats van geoptimaliseerd).
+Foto's staan in `src/data/photos.json` (bron, maker, licentie, alt-tekst). Een artikel, eetadres, artiest, organisatie of evenement verwijst ernaar met `photo: "<id>"`. `npm run build` draait eerst `scripts/fetch-photos.mjs`, dat de foto's één voor één van Wikimedia Commons downloadt naar `src/assets/photos/` (met cache in `node_modules/.cache`); Astro zet ze daarna om naar geoptimaliseerde WebP-bestanden. Lukt een download niet (bijvoorbeeld zonder internet), dan wordt die foto rechtstreeks vanaf Wikimedia geladen. De pagina `/beeld/` toont automatisch de bronvermelding van elke foto.
 
 Eigen foto's: zet het bestand in `public/images/` en gebruik `image: /images/naam.jpg` in plaats van `photo`.
 

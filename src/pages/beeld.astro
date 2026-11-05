@@ -13,7 +13,7 @@ const items = Object.entries(allPhotos);
       <div class="beeld-list mt-2">
         {items.map(([id, p]) => (
           <div class="beeld-item" id={id}>
-            <div class="thumb"><Photo photo={p} sizes="180px" /></div>
+            <div class="thumb"><Photo photo={p} id={id} sizes="180px" /></div>
             <div>
               <h3>{p.caption}</h3>
               <p>Foto: <a href={p.source} rel="noopener" target="_blank">{p.author}</a>, via Wikimedia Commons.</p>

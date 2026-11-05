@@ -31,7 +31,7 @@ const widthFit = Math.min(40, 158 / longest).toFixed(1);
 const heightFit = (74 / (lines.length * 0.95)).toFixed(1);
 ---
 {photo ? (
-  <Photo photo={photo} sizes={sizes} eager={eager} class="art-photo" />
+  <Photo photo={photo} id={photo.id} sizes={sizes} eager={eager} class="art-photo" />
 ) : image ? (
   <img src={image} alt={alt} loading="lazy" style="width:100%;height:100%;object-fit:cover" />
 ) : (

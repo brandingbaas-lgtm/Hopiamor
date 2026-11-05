@@ -5,9 +5,10 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/fetch-photos.mjs && astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "fetch-photos": "node scripts/fetch-photos.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",

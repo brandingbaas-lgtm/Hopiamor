@@ -1,16 +1,19 @@
 ---
 /**
- * Photos live on Wikimedia Commons. On Vercel, Astro downloads and optimizes
- * them at build time; set HOPI_HOTLINK=1 for a local build without internet.
+ * scripts/fetch-photos.mjs downloads the photos before the build so Astro can
+ * optimize them as local files. If a photo is missing (e.g. no internet while
+ * building locally) it is hotlinked from Wikimedia instead.
  */
 import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import type { Photo } from '../lib/photos';
-interface Props { photo: Photo; sizes?: string; class?: string; eager?: boolean; }
-const { photo, sizes = '(max-width: 700px) 100vw, 50vw', class: className = 'photo', eager = false } = Astro.props;
-const hotlink = import.meta.env.HOPI_HOTLINK === '1';
+interface Props { photo: Photo; id?: string; sizes?: string; class?: string; eager?: boolean; }
+const { photo, id, sizes = '(max-width: 700px) 100vw, 50vw', class: className = 'photo', eager = false } = Astro.props;
+const files = import.meta.glob<{ default: ImageMetadata }>('../assets/photos/*.{jpg,jpeg,png}', { eager: true });
+const local = id ? Object.entries(files).find(([f]) => f.replace(/\.[a-z]+$/i, '').endsWith(`/${id}`))?.[1].default : undefined;
 ---
-{hotlink ? (
-  <img class={className} src={photo.src} width={photo.width} height={photo.height} alt={photo.alt} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+{local ? (
+  <Image class={className} src={local} widths={[480, 800, 1200, 1600]} sizes={sizes} format="webp" quality={78} alt={photo.alt} loading={eager ? 'eager' : 'lazy'} />
 ) : (
-  <Image class={className} src={photo.src} width={photo.width} height={photo.height} widths={[480, 800, 1200, 1600]} sizes={sizes} format="webp" quality={78} alt={photo.alt} loading={eager ? 'eager' : 'lazy'} />
+  <img class={className} src={photo.src} width={photo.width} height={photo.height} alt={photo.alt} loading={eager ? 'eager' : 'lazy'} decoding="async" />
 )}

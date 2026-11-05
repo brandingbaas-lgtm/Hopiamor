@@ -29,5 +29,5 @@ const isExternal = event.url?.startsWith('http');
     </dl>
     {event.url && <a class="more" href={event.url} rel={isExternal ? 'noopener' : undefined} target={isExternal ? '_blank' : undefined}>Meer info</a>}
   </div>
-  {photo && <div class="event-photo"><Photo photo={photo} sizes="(max-width: 700px) 100vw, 150px" /></div>}
+  {photo && <div class="event-photo"><Photo photo={photo} id={photo.id} sizes="(max-width: 700px) 100vw, 150px" /></div>}
 </article>
