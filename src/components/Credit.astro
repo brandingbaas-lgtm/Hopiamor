@@ -1,0 +1,8 @@
+---
+import type { Photo } from '../lib/photos';
+interface Props { photo: Photo; }
+const { photo } = Astro.props;
+---
+<figcaption class="credit">
+  {photo.caption}. Foto: <a href={photo.source} rel="noopener" target="_blank">{photo.author}</a>, <a href={photo.licenseUrl} rel="noopener" target="_blank">{photo.license}</a>, via Wikimedia Commons.
+</figcaption>

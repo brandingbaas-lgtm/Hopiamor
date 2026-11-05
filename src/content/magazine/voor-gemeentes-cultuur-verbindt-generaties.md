@@ -7,6 +7,7 @@ tagColor: sea
 color: sand
 motif: people
 coverWord: "Huntu"
+photo: "koppelpoort"
 readingTime: 5
 featured: false
 ---

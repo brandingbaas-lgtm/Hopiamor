@@ -3,7 +3,12 @@
  * Poster-style cover: colour field, halftone dots, one big word.
  * Used until real photos exist; pass `image` to show a photo instead.
  */
+import Photo from './Photo.astro';
+import type { Photo as PhotoData } from '../lib/photos';
 interface Props {
+  photo?: PhotoData;
+  sizes?: string;
+  eager?: boolean;
   color?: 'sun' | 'coral' | 'sea' | 'palm' | 'plum' | 'ink' | 'sand';
   motif?: 'sun' | 'waves' | 'domino' | 'palm' | 'drum' | 'plate' | 'mic' | 'people' | 'star' | 'book' | 'flag';
   label?: string;
@@ -12,7 +17,7 @@ interface Props {
   alt?: string;
   initials?: string;
 }
-const { color = 'sun', motif = 'sun', label, kicker, image, alt = '', initials } = Astro.props;
+const { photo, sizes, eager, color = 'sun', motif = 'sun', label, kicker, image, alt = '', initials } = Astro.props;
 
 // Papiamentu words as default cover text, one per theme.
 const words: Record<string, string> = {
@@ -25,7 +30,9 @@ const longest = Math.max(3, ...lines.map((l) => l.length));
 const widthFit = Math.min(40, 158 / longest).toFixed(1);
 const heightFit = (74 / (lines.length * 0.95)).toFixed(1);
 ---
-{image ? (
+{photo ? (
+  <Photo photo={photo} sizes={sizes} eager={eager} class="art-photo" />
+) : image ? (
   <img src={image} alt={alt} loading="lazy" style="width:100%;height:100%;object-fit:cover" />
 ) : (
   <div class={`art ${color}`} aria-hidden="true">

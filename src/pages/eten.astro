@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Art from '../components/Art.astro';
+import { getPhoto } from '../lib/photos';
 import food from '../data/food.json';
 const cities = [...new Set(food.map((f) => f.city))].sort();
 const wanted = ['Amersfoort', 'Utrecht', 'Almere', 'Den Haag', 'Tilburg', 'Groningen'];
@@ -18,7 +19,7 @@ const wanted = ['Amersfoort', 'Utrecht', 'Almere', 'Den Haag', 'Tilburg', 'Groni
       <div class="grid cols-3" data-food>
         {food.map((f) => (
           <article class="card" data-city={f.city}>
-            <div class="cover"><Art color={f.color as any} motif="plate" label={f.name} kicker={f.kitchen} /></div>
+            <div class="cover"><Art photo={getPhoto(f.photo)} sizes="(max-width: 640px) 100vw, 33vw" color={f.color as any} motif="plate" label={f.name} kicker={f.kitchen} /></div>
             <div class="body">
               <div class="meta"><span class="tag palm">{f.kitchen}</span>{f.status !== 'geverifieerd' && <span class="tag outline">Nog te checken</span>}</div>
               <h3>{f.name}</h3>

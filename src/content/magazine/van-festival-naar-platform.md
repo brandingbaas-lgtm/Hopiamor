@@ -7,6 +7,7 @@ tagColor: coral
 color: coral
 motif: sun
 coverWord: "Nos ta huntu"
+photo: "zomercarnaval-2011"
 readingTime: 5
 featured: true
 ---

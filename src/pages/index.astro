@@ -10,6 +10,7 @@ import events from '../data/events.json';
 import food from '../data/food.json';
 import music from '../data/music.json';
 import { site } from '../lib/site';
+import { getPhoto } from '../lib/photos';
 
 const posts = (await getCollection('magazine')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const featured = posts.find((p) => p.data.featured) ?? posts[0];
@@ -36,7 +37,7 @@ const issue = new Date().toLocaleDateString('nl-NL', { month: 'long', year: 'num
 
       <div class="cover-grid">
         <a class="cover-story" href={`/magazine/${featured.id}/`}>
-          <div class="cover"><Art color={featured.data.color} motif={featured.data.motif} label={featured.data.coverWord} kicker="Coververhaal" image={featured.data.image} /></div>
+          <div class="cover"><Art photo={getPhoto(featured.data.photo)} sizes="(max-width: 900px) 100vw, 60vw" eager color={featured.data.color} motif={featured.data.motif} label={featured.data.coverWord} kicker="Coververhaal" image={featured.data.image} /></div>
           <span class={`tag ${featured.data.tagColor ?? ''}`}>{featured.data.category}</span>
           <h2>{featured.data.title}</h2>
           <p class="lede">{featured.data.description}</p>
@@ -85,7 +86,7 @@ const issue = new Date().toLocaleDateString('nl-NL', { month: 'long', year: 'num
         <div class="list mt-2">
           {spots.map((s) => (
             <div class="row">
-              <div class="cover"><Art color={s.color as any} motif="plate" label={s.name} /></div>
+              <div class="cover"><Art photo={getPhoto(s.photo)} sizes="96px" color={s.color as any} motif="plate" label={s.name} /></div>
               <div>
                 <h3>{s.name}</h3>
                 <p>{s.summary}</p>
@@ -96,7 +97,7 @@ const issue = new Date().toLocaleDateString('nl-NL', { month: 'long', year: 'num
         </div>
         <div class="btn-row mt-2"><a class="btn" href="/eten/">Naar de eetgids</a><a class="btn ghost" href="/aanmelden/#eettent">Adres aanmelden</a></div>
       </div>
-      <div class="art-block"><Art color="palm" motif="plate" kicker="Rubriek 02" /></div>
+      <div class="art-block"><Art photo={getPhoto('sancocho')} color="palm" motif="plate" kicker="Rubriek 02" /></div>
     </div>
   </section>
 
@@ -106,7 +107,7 @@ const issue = new Date().toLocaleDateString('nl-NL', { month: 'long', year: 'num
       <div class="grid cols-4">
         {artists.map((a) => (
           <article class="card">
-            <div class="cover square"><Art color={a.color as any} motif={a.motif as any} label={a.name} kicker={a.kind} /></div>
+            <div class="cover square"><Art photo={getPhoto(a.photo)} sizes="(max-width: 640px) 100vw, 25vw" color={a.color as any} motif={a.motif as any} label={a.name} kicker={a.kind} /></div>
             <div class="body">
               <div class="meta">{a.genres.join(' · ')}</div>
               <h3>{a.name}</h3>

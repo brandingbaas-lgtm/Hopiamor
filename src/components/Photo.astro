@@ -1,0 +1,16 @@
+---
+/**
+ * Photos live on Wikimedia Commons. On Vercel, Astro downloads and optimizes
+ * them at build time; set HOPI_HOTLINK=1 for a local build without internet.
+ */
+import { Image } from 'astro:assets';
+import type { Photo } from '../lib/photos';
+interface Props { photo: Photo; sizes?: string; class?: string; eager?: boolean; }
+const { photo, sizes = '(max-width: 700px) 100vw, 50vw', class: className = 'photo', eager = false } = Astro.props;
+const hotlink = import.meta.env.HOPI_HOTLINK === '1';
+---
+{hotlink ? (
+  <img class={className} src={photo.src} width={photo.width} height={photo.height} alt={photo.alt} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+) : (
+  <Image class={className} src={photo.src} width={photo.width} height={photo.height} widths={[480, 800, 1200, 1600]} sizes={sizes} format="webp" quality={78} alt={photo.alt} loading={eager ? 'eager' : 'lazy'} />
+)}
